@@ -12,9 +12,13 @@ public class User {
     private String password;
     private long id;
 
+    private String description;
+    private String filename;
+
     private User(String username, String password) {
         this.username = username;
         this.password = password;
+        this.description = "no description entered...";
 
         this.id = lastId;
         lastId++;
@@ -30,6 +34,18 @@ public class User {
 
     public String getUsername(){
         return username;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
+    }
+
+    public void setDescription(String description){
+        this.description = description;
+    }
+
+    public String getDescription(){
+        return description;
     }
 
     public boolean checkPassword(String password){
