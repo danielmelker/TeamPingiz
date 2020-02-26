@@ -26,7 +26,7 @@ public class BookingRep {
             slotStart = LocalTime.of(startTime, 0);
             slotEnd = LocalTime.of(startTime+1, 0);
 
-            BookingSlot slot = new BookingSlot(slotStart, slotEnd);
+            BookingSlot slot = new BookingSlot(slotStart, slotEnd, startTime);
 
             bookingSlotList.add(slot);
 

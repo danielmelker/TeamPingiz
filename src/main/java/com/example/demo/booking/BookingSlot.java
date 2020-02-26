@@ -9,10 +9,12 @@ public class BookingSlot {
 //    private int endTime;
     private LocalTime startTime;
     private LocalTime endTime;
+    private int slotID;
 
-    public BookingSlot (LocalTime startTime, LocalTime endTime){
+    public BookingSlot (LocalTime startTime, LocalTime endTime, int slotID){
         this.startTime = startTime;
         this.endTime = endTime;
+        this.slotID = slotID;
         isAvailable = true;
     }
 
@@ -22,6 +24,14 @@ public class BookingSlot {
 
     public void setAvailable(boolean available) {
         isAvailable = available;
+    }
+
+    public int getSlotID() {
+        return slotID;
+    }
+
+    public void setSlotID(int slotID) {
+        this.slotID = slotID;
     }
 
     public LocalTime getStartTime() {
