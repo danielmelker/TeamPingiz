@@ -31,5 +31,9 @@ public class AuthResponse {
         checkNotNull(username);
         return new AuthResponse(type, username);
     }
+
+    public boolean isValid(){
+        return type == type.VALID;
+    }
 }
 
