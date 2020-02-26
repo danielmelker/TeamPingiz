@@ -19,7 +19,6 @@ public class UserController {
         User u = User.of("test", "pass");
         User v = User.of("jacob", "asdf");
 
-
         System.out.println(userService);
 
         userService.register(u);

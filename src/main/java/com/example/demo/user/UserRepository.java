@@ -1,13 +1,11 @@
 package com.example.demo.user;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import java.util.*;
 
-@Service
+@Repository
 public class UserRepository {
-
 
     private Map<String, User> users;
 
@@ -24,8 +22,6 @@ public class UserRepository {
             return true;
         }
     }
-
-
 
     public Set<User> getAllUsers(){
         return new HashSet<User>(users.values());
