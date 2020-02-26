@@ -1,10 +1,11 @@
 package com.example.demo.user;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
-@Repository
+@Service
 public class UserRepository {
 
 
@@ -37,10 +38,5 @@ public class UserRepository {
             return null;
         }
     }
-
-
-
-
-
-
+    
 }

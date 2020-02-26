@@ -11,13 +11,23 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class UserController {
 
-    @Autowired
     private UserService userService;
 
-    public UserController(){
+    public UserController(UserService userService){
+        this.userService = userService;
         //debugging: create two test-users.
         User u = User.of("test", "pass");
         User v = User.of("jacob", "asdf");
+
+        System.out.println(userService);
+
+        userService.register(u);
+        userService.register(v);
+    }
+
+    @GetMapping("/login")
+    public String login(HttpSession session){
+        return "login";
     }
 
 
@@ -28,14 +38,13 @@ public class UserController {
         AuthResponse response = userService.logIn(username, password);
 
         if(response.isValid()){
-
             session.setAttribute("currentUser", username );
             session.setAttribute("validated", true);
             return "index";
         } else {
             session.setAttribute("currentUser", "");
             session.setAttribute("validated", false);
-            return "welcomePage";
+            return "login";
         }
 
     }

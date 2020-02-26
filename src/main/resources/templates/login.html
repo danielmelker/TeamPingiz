@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Pingiz - login</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+
+<div th:replace="sidebar :: sidebar"/>
+
+
+<div class="container text-center" style="width: 500px">
+    <h1 class="display-3">Log in</h1>
+
+    <form action="/login" method="POST">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text"  name="username" id="username" class="form-control" />
+            <br>
+            <label for="password">Password</label>
+            <input type="password"  name="password" id="password" class="form-control" />
+            <input class="btn btn-primary mt-3" type="submit"/>
+        </div>
+    </form>
+
+
+</div>
+
+</body>
+</html>
