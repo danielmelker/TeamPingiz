@@ -1,0 +1,40 @@
+package com.example.demo.user;
+
+import org.springframework.stereotype.Repository;
+
+import java.util.*;
+
+@Repository
+public class UserRepository {
+
+
+    private Map<String, User> users;
+
+    public UserRepository(){
+        users = new HashMap<>();
+    }
+
+    public void add(User user){
+        users.put(user.getUsername(), user);
+    }
+
+
+
+    public Set<User> getAllUsers(){
+        return new HashSet<User>(users.values());
+    }
+
+    public User findByUsername(String username){
+        if(users.containsKey(username)){
+            return users.get(username);
+        } else {
+            return null;
+        }
+    }
+
+
+
+
+
+
+}
