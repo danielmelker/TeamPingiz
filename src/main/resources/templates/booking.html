@@ -14,13 +14,13 @@
 </head>
 <body>
 
-<!-- Button trigger modal -->
-<!--<li th:each=”slot : ${bookingList}” >-->
-<!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" value="${slot.startTime}">-->
-<!--</button>-->
-<!--</li>-->
+<!-- Button trigger modal-->
+<li th:each=”slot : ${bookingList}” >
+<button type="button" class="btn btn-primary" data-toggle="modal" th:data-target="#exampleModal" value="${slot.startTime}">
+</button>
+</li>
 
-<!-- Modal -->
+<!-- Modal-->
 <!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
 <!--    <div class="modal-dialog" role="document">-->
 <!--        <div class="modal-content">-->
@@ -42,9 +42,9 @@
 <!--</div>-->
 
 <ul>
-<li th:each=”slot : ${bookingList}” th:text${slot}>
-<form action="booking/${slot.slotID}" method="post">
-    <input class="btn btn-primary mt-3" type="submit" value="${slot.startTime}"/>
+<li th:each="slot : ${bookingList}">
+<form th:action="'/booking/' + ${slot.slotID}" method="post">
+    <input class="btn btn-primary mt-3" type="submit" th:value="${slot.startTime}"/>
 </form>
 </li>
 </ul>
