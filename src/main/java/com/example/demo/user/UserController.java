@@ -19,7 +19,6 @@ public class UserController {
         User u = User.of("test", "pass");
         User v = User.of("jacob", "asdf");
 
-
         System.out.println(userService);
 
         userService.register(u);
@@ -39,7 +38,6 @@ public class UserController {
         AuthResponse response = userService.logIn(username, password);
 
         if(response.isValid()){
-
             session.setAttribute("currentUser", username );
             session.setAttribute("validated", true);
             return "index";
