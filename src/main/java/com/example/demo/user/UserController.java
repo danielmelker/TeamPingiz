@@ -25,6 +25,46 @@ public class UserController {
         userService.register(v);
     }
 
+
+    @GetMapping("/editProfile")
+    public String editProfile(HttpSession session){
+        if(session.getAttribute("validated")==null){
+            return "login";
+        }
+
+        if((boolean)session.getAttribute("validated")){
+            User u = userService.getUser((String)session.getAttribute("currentUser"));
+
+            session.setAttribute("userDescription", u.getDescription());
+            return "editProfile";
+        }
+
+        return "login";
+    }
+
+    @PostMapping("/editProfile")
+    public String editProfile(HttpSession session, @RequestParam(name="description") String description,
+                              @RequestParam(name="password", defaultValue="") String password){
+        if(session.getAttribute("validated")==null){
+            return "index";
+        }
+
+        if((boolean)session.getAttribute("validated")){
+            User u = userService.getUser((String)session.getAttribute("currentUser"));
+
+            session.setAttribute("userDescription", description);
+            u.setDescription(description);
+
+            if(password != null && !password.equals("")){
+                u.setPassword(password);
+            }
+
+            return "editProfile";
+        }
+
+        return "index";
+    }
+
     @GetMapping("/login")
     public String login(HttpSession session){
         return "login";
