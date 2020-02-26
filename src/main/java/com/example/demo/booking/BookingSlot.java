@@ -1,0 +1,52 @@
+package com.example.demo.booking;
+
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
+public class BookingSlot {
+    private boolean isAvailable;
+//    private int startTime;
+//    private int endTime;
+    private LocalTime startTime;
+    private LocalTime endTime;
+    private int slotID;
+
+    public BookingSlot (LocalTime startTime, LocalTime endTime, int slotID){
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.slotID = slotID;
+        isAvailable = true;
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
+
+    public int getSlotID() {
+        return slotID;
+    }
+
+    public void setSlotID(int slotID) {
+        this.slotID = slotID;
+    }
+
+    public LocalTime getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(LocalTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public LocalTime getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(LocalTime endTime) {
+        this.endTime = endTime;
+    }
+}
