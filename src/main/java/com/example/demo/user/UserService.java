@@ -10,8 +10,6 @@ public class UserService {
     private UserRepository userRepo;
 
 
-
-
     public AuthResponse logIn(String username, String password){
 
         User u = userRepo.findByUsername(username);
