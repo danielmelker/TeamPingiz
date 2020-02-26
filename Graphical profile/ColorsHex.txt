@@ -1,0 +1,10 @@
+
+Main red: #CC0E00
+
+Dark red: #800800
+
+Bright green: #00CC54
+
+Dark green: #008035
+
+Feature red: #FF2919
