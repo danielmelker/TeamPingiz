@@ -24,8 +24,8 @@ public class UserService {
         }
     }
 
-    public void register(User user){
-        userRepo.add(user);
+    public boolean register(User user){
+        return userRepo.add(user);
     }
 
 

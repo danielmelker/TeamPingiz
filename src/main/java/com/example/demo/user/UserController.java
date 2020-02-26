@@ -14,6 +14,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    public UserController(){
+        //debugging: create two test-users.
+        User u = User.of("test", "pass");
+        User v = User.of("jacob", "asdf");
+    }
+
 
     @PostMapping("/login")
     public String login(HttpSession session, @RequestParam(name="username") String username,

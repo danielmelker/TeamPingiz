@@ -14,8 +14,14 @@ public class UserRepository {
         users = new HashMap<>();
     }
 
-    public void add(User user){
-        users.put(user.getUsername(), user);
+    public boolean add(User user){
+
+        if(users.containsKey(user.getUsername())){
+            return false; //username is taken.
+        } else {
+            users.put(user.getUsername(), user);
+            return true;
+        }
     }
 
 
