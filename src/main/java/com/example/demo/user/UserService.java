@@ -22,6 +22,10 @@ public class UserService {
         }
     }
 
+    public User getUser(String username){
+        return userRepo.findByUsername(username);
+    }
+
     public boolean register(User user){
         return userRepo.add(user);
     }

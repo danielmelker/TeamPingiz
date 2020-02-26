@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>Pingiz - Login</title>
     <meta charset="utf-8">
@@ -42,16 +42,19 @@
     <div id="content" class="p-4 p-md-5 pt-5">
 
         <div class="container text-center" style="width: 500px">
-            <h1 class="display-3">Log in</h1>
+            <h1 class="display-3">Edit profile</h1>
+            <h2 class="">Username: [[${session.currentUser}]]</h2>
 
+            <p class="">Current description: [[${session.userDescription}]]</p>
 
-            <form action="/login" method="POST">
+            <form action="/editProfile" method="POST">
                 <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text"  name="username" id="username" class="" />
+                    <label for="description">New description</label>
+                    <input th:field="${session.userDescription}" type="textarea"  name="description" id="description" class="" />
                     <br>
-                    <label for="password">Password</label>
-                    <input type="password"  name="password" id="password" class="" />
+                    <label for="description">New password</label>
+                    <input  type="password"  name="password" id="password" class="" />
+                    <br>
                     <input class="btn btn-primary mt-3" type="submit"/>
                 </div>
             </form>
