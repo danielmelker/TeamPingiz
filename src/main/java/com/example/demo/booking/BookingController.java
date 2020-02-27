@@ -22,6 +22,6 @@ public class BookingController {
     @PostMapping("/booking/{slotID}")
     String booking(Model model, @PathVariable int slotID){
         bookingService.setToBooked(slotID);
-     return "booking";
+     return "redirect:/booking";
     }
 }
