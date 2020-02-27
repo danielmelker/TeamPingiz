@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <title>Booking</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Pridi&display=swap" rel="stylesheet">
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" href="images/LogoInverted.ico" />
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pridi&display=swap" rel="stylesheet">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -17,100 +17,97 @@
     <link rel="stylesheet" href="styles.css">
 
     <link rel="stylesheet" href="booking.css">
-
 </head>
 <body>
+<div class="wrapper d-flex align-items-stretch">
 
-    <div class="wrapper d-flex align-items-stretch">
+    <div th:replace="index :: sidebar" ></div>
 
-        <div th:replace="index :: sidebar" ></div>
+    <div id="content" class="p-4 p-md-5 pt-5">
 
-
-    <div class="container">
+        <div class="stylez">
             <h1><b>Book the Pingiz table</b></h1>
             <p>Click the time you want to book. Time slots in grey are unavailable.<br>You can only book one hour at the time.<br>You must cancel your booking the latest an hour before.</p>
+        </div>
 
-    <div class="row">
+        <div class="container">
+            <div class="row">
+                <div class="modalID  col-md-auto" th:each="slot : ${bookingList}">
+                    <div th:if="${slot.isAvailable}">
+                        <button type="button" class="btn" data-toggle="modal" th:attr="data-target='#a' + ${slot.slotID}" th:text="${slot.startTime}">
+                        </button>
 
-            <div class="modalID  col-md-auto" th:each="slot : ${bookingList}">
-                <div th:if="${slot.isAvailable}">
-                <button type="button" class="btn" data-toggle="modal" th:attr="data-target='#a' + ${slot.slotID}" th:text="${slot.startTime}">
-                </button>
-                    <!-- Modal -->
-                    <div th:if="${session.validated}">
-                    <div class="modal fade" th:id="'a' + ${slot.slotID}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel" th:text="${slot.startTime} + ' - ' + ${slot.endTime}"></h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
+                        <!-- Modal -->
+                        <div th:if="${session.validated}">
+                            <div class="modal fade" th:id="'a' + ${slot.slotID}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel" th:text="${slot.startTime} + ' - ' + ${slot.endTime}"></h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
 
-                                <div class="modal-body">
-                                    <span>Book the Pingiz table with equipment</span>
-                                </div>
-                                <div class="modal-footer">
-                                    <form th:action="'/booking/' + ${slot.slotID}" method="post">
-                                        <input class="btn" type="submit" value="Book"/>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                    <div th:if="${!session.validated}">
-                        <div class="modal fade" th:id="'a' + ${slot.slotID}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="jexampleModalLabel" th:text="${slot.startTime} + ' - ' + ${slot.endTime}"></h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-
-                                    <div class="modal-body">
-                                        <span>Login in order to book!</span>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <form action="/login" method="get">
-                                            <input class="btn" type="submit" value="Login"/>
-                                        </form>
+                                        <div class="modal-body">
+                                            <span class="modal-text">Book the Pingiz table with equipment</span>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form th:action="'/booking/' + ${slot.slotID}" method="post">
+                                                <input class="btn" type="submit" value="Book"/>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
+                        <div th:if="${!session.validated}">
+                            <div class="modal fade" th:id="'a' + ${slot.slotID}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="jexampleModalLabel" th:text="${slot.startTime} + ' - ' + ${slot.endTime}"></h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            <span class="modal-text">Login in order to book!</span>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form action="/login" method="get">
+                                                <input class="btn" type="submit" value="Login"/>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
+                    <div th:if="${!slot.isAvailable}">
+                        <button type="button" class="btn btn-secondary" th:text="${slot.startTime}" aria-disabled="true">
+                        </button>
+                    </div>
                 </div>
-
-                <div th:if="${!slot.isAvailable}">
-                    <button type="button" class="btn btn-secondary" th:text="${slot.startTime}" aria-disabled="true">
-                    </button>
-                </div>
-
-                </div>
-                <div class="col-3">
-                </div>
-    <!--        </div>-->
+                <div class="col-3"></div>
+            </div>
         </div>
     </div>
+
+    <script src="jquery.min.js"></script>
+    <script src="popper.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="main.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </div>
-
-
-
-<script src="jquery.min.js"></script>
-<script src="popper.js"></script>
-<script src="bootstrap.min.js"></script>
-<script src="main.js"></script>
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+</div>
 </body>
 </html>
