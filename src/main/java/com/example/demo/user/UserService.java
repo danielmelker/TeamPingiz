@@ -33,6 +33,16 @@ public class UserService {
         return userRepo.add(user);
     }
 
+    public boolean register(User... users){
+        boolean b= true;
+        for(User u:users){
+            if(!userRepo.add(u))
+                b=false;
+        }
+        return b;
+    }
+
+
 
     public Set<User> getUsers() {
         return userRepo.getAllUsers();

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.util.stream.Stream;
 
 @Controller
 public class UserController {
@@ -16,14 +17,27 @@ public class UserController {
 
     public UserController(UserService userService){
         this.userService = userService;
+        setupTestUsers();
+    }
+
+
+    private void setupTestUsers(){
         //debugging: create two test-users.
         User u = User.of("test", "pass");
-        User v = User.of("jacob", "asdf");
+        User u1 = User.of("Jacob", "pass");
+        User u2 = User.of("Elvira", "pass");
+        User u3 = User.of("Caroline", "pass");
+        User u4 = User.of("Daniel", "pass");
+        User u5 = User.of("Christoffer", "pass");
 
-        System.out.println(userService);
+        Stream.of(u,u1,u2,u3,u4,u5).forEach(user -> user.setAcademyClass("Java")) ;
+        Stream.of(u,u1,u2,u3,u4,u5).forEach(user -> user.setDescription("Pingiz developer and ping-pong master!")) ;
+        u4.setFileURL("https://upload.wikimedia.org/wikipedia/commons/5/53/Donald_Trump_official_portrait_%28cropped%29.jpg");
+        u4.setDescription("Make Pingis Great Again!");
+        userService.register(u,u1,u2,u3,u4,u5);
 
-        userService.register(u);
-        userService.register(v);
+
+
     }
 
 
