@@ -5,7 +5,7 @@
     margin-top: 70px;
 }
 
-h1, p {
+h1{
     color: #CC0E00;
 }
 
@@ -18,4 +18,19 @@ h1, p {
 .btn:hover {
   background-color: rgb(252, 160, 153);
   color: black;
+}
+
+.btn-secondary{
+color: black;
+background-color: grey;
+}
+
+.btn-secondary:hover{
+color: black;
+background-color: grey;
+}
+
+.btn-secondary:onclick{
+color: black;
+background-color: grey;
 }
