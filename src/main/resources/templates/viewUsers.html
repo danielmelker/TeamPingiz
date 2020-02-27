@@ -28,11 +28,22 @@
 
             <div class="list-group">
                 <a th:each="user : ${users}" href="#" class="list-group-item list-group-item-action flex-column align-items-start active m-1">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">[[${user.username}]]</h5>
+
+                    <div class="row">
+                        <div class="col-3">
+                            <img th:src="${user.fileURL}" class="img-fluid img-thumbnail " />
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">[[${user.username}]]</h5>
+                            </div>
+
+                            <p class="mb-1">[[${user.description}]]</p>
+                            <small>Academy class: [[${user.academyClass}]] </small>
+                        </div>
                     </div>
-                    <p class="mb-1">[[${user.description}]]</p>
-                    <small>Pingis enthusiast</small>
+
+
                 </a>
             </div>
 
