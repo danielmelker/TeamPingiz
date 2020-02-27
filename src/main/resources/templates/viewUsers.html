@@ -22,22 +22,19 @@
     <div id="content" class="p-4 p-md-5 pt-5">
 
         <div class="container text-center" style="width: 500px">
-            <h1 class="display-3">Edit profile</h1>
-            <h2 class="">Username: [[${session.currentUser}]]</h2>
+            <h1 class="display-4">Registered users: </h1>
 
-            <p class="">Current description: [[${session.userDescription}]]</p>
 
-            <form action="/editProfile" method="POST">
-                <div class="form-group">
-                    <label for="description">New description</label>
-                    <input th:field="${session.userDescription}" type="textarea"  name="description" id="description" class="" />
-                    <br>
-                    <label for="description">New password</label>
-                    <input  type="password"  name="password" id="password" class="" />
-                    <br>
-                    <input class="btn btn-primary mt-3" type="submit"/>
-                </div>
-            </form>
+
+            <div class="list-group">
+                <a th:each="user : ${users}" href="#" class="list-group-item list-group-item-action flex-column align-items-start active m-1">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">[[${user.username}]]</h5>
+                    </div>
+                    <p class="mb-1">[[${user.description}]]</p>
+                    <small>Pingis enthusiast</small>
+                </a>
+            </div>
 
 
         </div>
