@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>Pingiz - Login</title>
     <meta charset="utf-8">
@@ -12,33 +12,9 @@
 </head>
 <body>
 <div class="wrapper d-flex align-items-stretch">
-    <nav id="sidebar">
-        <div class="custom-menu">
-            <button type="button" id="sidebarCollapse" class="btn btn-primary">
-                <i class="fa fa-bars"></i>
-                <span class="sr-only">Toggle Menu</span>
-            </button>
-        </div>
-        <h1><a href="#" class="logo">PingiZ</a></h1>
-        <ul class="list-unstyled components mb-5">
-            <li class="active">
-                <a href="#"><span class="fa fa-home mr-3"></span> Profil</a>
-            </li>
-            <li>
-                <a href="#"><span class="fa fa-user mr-3"></span> Boka bord</a>
-            </li>
-            <li>
-                <a href="#"><span class="fa fa-sticky-note mr-3"></span> Forum</a>
-            </li>
-            <li>
-                <a href="#"><span class="fa fa-sticky-note mr-3"></span> Log out</a>
-            </li>
+    <div th:replace="index :: sidebar" ></div>
 
-        </ul>
-
-    </nav>
-
-    <!-- Page Content  -->
+<!-- Page Content  -->
     <div id="content" class="p-4 p-md-5 pt-5">
 
         <div class="container text-center" style="width: 500px">
@@ -52,6 +28,7 @@
                     <br>
                     <label for="password">Password</label>
                     <input type="password"  name="password" id="password" class="" />
+                    <br>
                     <input class="btn btn-primary mt-3" type="submit"/>
                 </div>
             </form>
