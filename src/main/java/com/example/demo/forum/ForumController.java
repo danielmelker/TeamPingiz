@@ -1,5 +1,9 @@
 package com.example.demo.forum;
 
+import com.example.demo.user.User;
+import com.example.demo.user.UserController;
+import com.example.demo.user.UserService;
+import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +16,8 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -21,9 +27,11 @@ public class ForumController {
     @Autowired
     ForumRepository forumRepository;
 
+
+
     @GetMapping("/forum")
     public String showForum(HttpSession session){
-        session.setAttribute("tidigareTexter", forumRepository.postList);
+        session.setAttribute("postsAtt", forumRepository.forumPostList);
         return "forum";
     }
 
@@ -31,18 +39,14 @@ public class ForumController {
 
     @PostMapping("/forum")
     public String postToForum(@RequestParam String inputText, HttpSession session){
+        String currentUser = (String)session.getAttribute("currentUser");
 
+        forumRepository.forumPostList.add(new ForumPost(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM - yyyy")),
+                LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")),inputText,
+                currentUser));
 
-        String nuu = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM - yyyy"));
-        String nuub = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        session.setAttribute("postsAtt",forumRepository.forumPostList);
 
-
-        session.setAttribute("timea",nuu);
-        session.setAttribute("timeb",nuub);
-
-
-        forumRepository.postList.add(inputText);
-        session.setAttribute("tidigareTexter", forumRepository.postList);
         return "forum";
     }
 }
