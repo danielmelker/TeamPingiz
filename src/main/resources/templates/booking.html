@@ -15,39 +15,43 @@
 <body>
 
 <!-- Button trigger modal -->
-<!--<li th:each=”slot : ${bookingList}” >-->
-<!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" value="${slot.startTime}">-->
-<!--</button>-->
-<!--</li>-->
+<ul>
+<li th:each="slot : ${bookingList}">
+<button type="button" class="btn btn-primary" data-toggle="modal" th:attr="data-target='#' + ${slot.slotID}" th:value="${slot.startTime}">
+</button>
 
 <!-- Modal -->
-<!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-<!--    <div class="modal-dialog" role="document">-->
-<!--        <div class="modal-content">-->
-<!--            <div class="modal-header">-->
-<!--                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>-->
-<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--                    <span aria-hidden="true">&times;</span>-->
-<!--                </button>-->
-<!--            </div>-->
-<!--            <div class="modal-body">-->
-<!--                ...-->
-<!--            </div>-->
-<!--            <div class="modal-footer">-->
-<!--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-<!--                <button type="button" class="btn btn-primary">Save changes</button>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
-<ul>
-<li th:each=”slot : ${bookingList}” th:text${slot}>
-<form action="booking/${slot.slotID}" method="post">
-    <input class="btn btn-primary mt-3" type="submit" value="${slot.startTime}"/>
-</form>
+<div class="modal fade" th:id="${slot.slotID}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form th:action="'/booking/' + ${slot.slotID}" method="post">
+                <input class="btn btn-primary mt-3" type="submit" value="Boka"/>
+            </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 </li>
 </ul>
+
+<!--<ul>-->
+<!--<li th:each="slot : ${bookingList}">-->
+<!--<form th:action="'/booking/' + ${slot.slotID}" method="post">-->
+<!--    <input class="btn btn-primary mt-3" type="submit" th:value="${slot.startTime}"/>-->
+<!--</form>-->
+<!--</li>-->
+<!--</ul>-->
 
 </body>
 </html>
