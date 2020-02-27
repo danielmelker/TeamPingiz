@@ -1,7 +1,17 @@
 .card-header {
-    background-color: #CC0E00
+    background-color: #CC0E00;
 }
 
 .card-body {
-    background-color: #CC0E00
+    background-color: #CC0E00;
+}
+
+.form-control {
+
+  border: 2px solid black;
+
+ }
+
+.form {
+border-radius: 25px;
 }
