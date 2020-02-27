@@ -44,3 +44,9 @@ background-color: grey;
 font-size: 1.5vw;
 }
 
+.btn-secondary:disabled{
+color: black;
+background-color: grey;
+font-size: 1.5vw;
+}
+
