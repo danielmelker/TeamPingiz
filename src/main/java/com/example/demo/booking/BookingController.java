@@ -34,8 +34,7 @@ public class BookingController {
             User user = userService.getUser(username);
             bookingService.setToBooked(slotID,user);
         }
+    return "redirect:/booking";
 
-
-     return "booking";
     }
 }
