@@ -24,13 +24,21 @@
         <div class="container text-center" style="width: 500px">
             <h1 class="display-3">Edit profile</h1>
             <h2 class="">Username: [[${session.currentUser}]]</h2>
+            <img th:src="${session.user.fileURL}" class="img img-fluid">
+            <p class="">Current description: [[${session.user.description}]]</p>
+            <p class="mt-1">Academy class: [[${session.user.academyClass}]]</p>
 
-            <p class="">Current description: [[${session.userDescription}]]</p>
 
             <form action="/editProfile" method="POST">
                 <div class="form-group">
                     <label for="description">New description</label>
                     <input th:field="${session.userDescription}" type="textarea"  name="description" id="description" class="" />
+                    <br>
+                    <label for="academyClass">Academy class</label>
+                    <input th:field="${session.academyClass}" type="textarea"  name="academyClass" id="academyClass" class="" />
+                    <br>
+                    <label for="imgFileURL">New profile picture url</label>
+                    <input type="text"  name="imgFileURL" id="imgFileURL" class="" />
                     <br>
                     <label for="description">New password</label>
                     <input  type="password"  name="password" id="password" class="" />

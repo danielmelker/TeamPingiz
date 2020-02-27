@@ -34,6 +34,8 @@ public class UserController {
         if(session.getAttribute("validated") != null && (boolean)session.getAttribute("validated")){
             User u = userService.getUser((String)session.getAttribute("currentUser"));
 
+
+            session.setAttribute("userImg", u.getFileURL());
             session.setAttribute("userDescription", u.getDescription());
             return "editProfile";
         }
@@ -42,17 +44,26 @@ public class UserController {
     }
 
     @PostMapping("/editProfile")
-    public String editProfile(HttpSession session, @RequestParam(name="description") String description,
+    public String editProfile(HttpSession session,
+                              @RequestParam(name="description") String description,
+                              @RequestParam(name="imgFileURL") String imgFileURL,
+                              @RequestParam(name="academyClass") String academyClass,
                               @RequestParam(name="password", defaultValue="") String password){
         if(session.getAttribute("validated")==null){
-            return "index";
+            return "redirect:'/login";
         }
 
         if((boolean)session.getAttribute("validated")){
             User u = userService.getUser((String)session.getAttribute("currentUser"));
 
-            session.setAttribute("userDescription", description);
-            u.setDescription(description);
+            session.setAttribute("user", u);
+
+            if(description!=null && !description.equalsIgnoreCase(""))
+                u.setDescription(description);
+            if(imgFileURL!=null && !imgFileURL.equalsIgnoreCase(""))
+                u.setFileURL(imgFileURL);
+            if(academyClass!=null && !academyClass.equalsIgnoreCase(""))
+                u.setAcademyClass(academyClass);
 
             if(password != null && !password.equals("")){
                 u.setPassword(password);
@@ -61,7 +72,7 @@ public class UserController {
             return "editProfile";
         }
 
-        return "index";
+        return "redirect/login";
     }
 
     @GetMapping("/login")
@@ -78,6 +89,8 @@ public class UserController {
 
         if(response.isValid()){
             session.setAttribute("currentUser", username );
+            var u = userService.getUser(username);
+            session.setAttribute("user", u);
             session.setAttribute("validated", true);
             return "redirect:/";
         } else {
@@ -121,6 +134,7 @@ public class UserController {
     @GetMapping("/logout")
     public String logout(HttpSession session){
         session.setAttribute("currentUser", "");
+        session.setAttribute("user", null);
         session.setAttribute("validated", false);
         return "redirect:/";
     }

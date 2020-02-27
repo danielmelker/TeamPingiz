@@ -8230,8 +8230,8 @@ h1, h2, h3, h4, h5,
       border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
       #sidebar ul li a:hover {
         color: #fff;
-        background: #2f89fc;
-        border-bottom: 1px solid #2f89fc; }
+        background: #CC0E00;
+        border-bottom: 1px solid #CC0E00; }
     #sidebar ul li.active > a {
       background: transparent;
       color: #fff; }
@@ -8295,11 +8295,11 @@ a[data-toggle="collapse"] {
   transition: all 0.3s; }
 
 .btn.btn-primary {
-  background: #2f89fc;
-  border-color: #2f89fc; }
+  background: #CC0E00;
+  border-color: #CC0E00; }
   .btn.btn-primary:hover, .btn.btn-primary:focus {
-    background: #2f89fc !important;
-    border-color: #2f89fc !important; }
+    background: #CC0E00 !important;
+    border-color: #CC0E00 !important; }
 
 .footer p {
   color: rgba(255, 255, 255, 0.5); }
