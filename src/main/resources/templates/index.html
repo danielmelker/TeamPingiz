@@ -21,13 +21,18 @@
                     <span class="sr-only">Toggle Menu</span>
                 </button>
             </div>
-            <h1><a href="#" class="logo">PingiZ</a></h1>
+            <h1><a href="/" class="logo">
+                <img th:src="@{/images/logo2.jpg}"  class="brand_logo" alt="Logo" style="width:100%;">
+            </a></h1>
             <ul class="list-unstyled components mb-5">
-                <li class="active">
-                    <a href="/editProfile"><span class="fa fa-home mr-3"></span> Profil</a>
+                <li class="">
+                    <a href="/forDummies"><span class="fa fa-home mr-3"></span> For Dummies</a>
+                </li>
+                <li class="">
+                    <a href="/editProfile"><span class="fa fa-home mr-3"></span> Profile</a>
                 </li>
                 <li>
-                    <a href="/booking"><span class="fa fa-user mr-3"></span> Boka bord</a>
+                    <a href="/booking"><span class="fa fa-user mr-3"></span> Book Pingiz table</a>
                 </li>
                 <li>
                     <a href="/forum"><span class="fa fa-sticky-note mr-3"></span> Forum</a>
@@ -45,7 +50,15 @@
 
         <!-- Page Content  -->
         <div id="content" class="p-4 p-md-5 pt-5">
-            <h2 class="mb-4">Pingis or die</h2>
+            <h2 class="mb-4">Welcome [[${session.currentUser}]]! </h2>
+            <p>How goes the Pingiz today? </p>
+
+            <h3>
+                Your booked times are:
+            </h3>
+            <ol>
+                <li>....... to be fixed</li>
+            </ol>
         </div>
     </div>
 

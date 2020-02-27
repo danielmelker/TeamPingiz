@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Pingiz - For Dummies</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="forDummies.css">
+</head>
+<body>
+
+<div class="wrapper d-flex align-items-stretch">
+
+    <div th:replace="index :: sidebar" ></div>
+
+    <div class = "column container p-4 p-md-5 pt-5">
+
+        <h1>Do you have what it takes to play PingiZ?</h1>
+        <h2>How hard can it be?</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/s_87e9RZE2o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>RuleZ</h3>
+        <p>Sometimes all you want to know are the basic rules to play a friendly match of ping pong. This section is for you. However if you want the official rules, <a href="http://www.pongworld.com/table-tennis-sport/official-rules">then read this.</a>
+        <h3>Scoring</h3>
+        <p>A match is played best 3 of 5 games (or 4/7 or 5/9). For each game, the first player to reach 11 points wins that game, however a game must be won by at least a two point margin.
+
+            A point is scored after each ball is put into play (not just when the server wins the point as in volleyball).
+
+            The edges of the table are part of the legal table surface, but not the sides.</p>
+        <h3>Flow of the match</h3>
+        <p>Each player serves two points in a row and then switch server. However, if a score of 10-10 is reached in any game, then each server serves only one point and then the server is switched. After each game, the players switch side of the table. In the final game (ie 5th game), the players switch side again after either player reaches 5 points.</p>
+        <h3>Legal serve</h3>
+        <p>The ball must rest on an open hand palm. Then it must be tossed up at least 6 inches and struck so the ball first bounces on the server's side and then the opponent's side.
+
+            If the serve is legal except that it touches the net, it is called a let serve. Let serves are not scored and are reserved.</p>
+        <h3>Equipment</h3>
+        <p>The paddle should have a red and a black side. The ball should be either orange or white and 40 mm in size. The table should be 2.74 meters long, 1.525 m wide, and 0.76 m high.
+
+        </p>
+        <h2>Now let's put it into practice!</h2>
+        <h3>If (beginner)
+        {</h3>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/yrFQCOcTlFY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>}</h3>
+        <h3>Else {</h3>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/BK9E6UoAotI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>}</h3>
+
+    </div>
+
+
+</div>
+</body>
+</html>
