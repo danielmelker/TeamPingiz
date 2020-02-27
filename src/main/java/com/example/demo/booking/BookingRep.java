@@ -3,6 +3,7 @@ package com.example.demo.booking;
 import org.springframework.stereotype.Repository;
 
 import java.awt.print.Book;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -27,17 +28,21 @@ public class BookingRep {
         int endTime = 19;
         LocalTime slotStart;
         LocalTime slotEnd;
+        LocalDate date;
 
+        for(int j = 0; j < 3; j++) {
+            date = LocalDate.now().plusDays(j);
 
-        for(int i = startTime; i < endTime; i++){
-            slotStart = LocalTime.of(startTime, 0);
-            slotEnd = LocalTime.of(startTime+1, 0);
+            for (int i = startTime; i < endTime; i++) {
+                slotStart = LocalTime.of(startTime, 0);
+                slotEnd = LocalTime.of(startTime + 1, 0);
 
-            BookingSlot slot = new BookingSlot(slotStart, slotEnd, startTime);
+                BookingSlot slot = new BookingSlot(slotStart, slotEnd, startTime, date);
 
-            bookingSlotList.add(slot);
+                bookingSlotList.add(slot);
 
-            startTime++;
+                startTime++;
+            }
         }
     }
 
