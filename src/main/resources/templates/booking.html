@@ -22,62 +22,56 @@
 
     <div th:replace="index :: sidebar" ></div>
 
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <h1>Bokning</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <p>Klicka på den tid du önskar boka pingisbordet. Du kan endast boka en timme åt gången.</p>
-        </div>
-    </div>
-    <div class="row">
-<!--        <div class="col">-->
-            <!-- Button trigger modal -->
-            <div class="modalID  col-md-auto" th:each="slot : ${bookingList}">
-                <button type="button" class="btn" data-toggle="modal" th:attr="data-target='#a' + ${slot.slotID}" th:text="${slot.startTime}">
-                </button>
-<!--                <div th:switch="${slot.isAvailable}">-->
-<!--                <span th:case="${true}">-->
-<!--                <button type="button" class="btn active" data-toggle="modal" th:attr="data-target='#a' + ${slot.slotID}" th:text="${slot.startTime}">-->
-<!--                </button>-->
-<!--                    </span>-->
-<!--                    <span th:case="${false}">-->
-<!--                <button type="button" class="btn disabled" data-toggle="modal" th:attr="data-target='#a' + ${slot.slotID}" th:text="${slot.startTime}">-->
-<!--                </button>-->
-<!--                    </span>-->
-<!--                </div>-->
+    <div class="container">
 
-                <!-- Modal -->
-                <div class="modal fade" th:id="'a' + ${slot.slotID}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel" th:text="${slot.startTime} + ' - ' + ${slot.endTime}"></h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <span>Boka pingisbordet med utrustning.</span>
-                            </div>
-                            <div class="modal-footer">
-                                <form th:action="'/booking/' + ${slot.slotID}" method="post">
-                                    <input class="btn btn-primary mt-3" type="submit" value="Boka"/>
-                                </form>
-                                <!--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-                                <!--                <button type="button" class="btn btn-primary">Save changes</button>-->
+                <h1>Bokning</h1>
+                <p>Klicka på den tid du önskar boka pingisbordet. Du kan endast boka en timme åt gången.</p>
+
+        <div class="row">
+    <!--        <div class="col">-->
+                <!-- Button trigger modal -->
+                <div class="modalID  col-md-auto" th:each="slot : ${bookingList}">
+                    <button type="button" class="btn" data-toggle="modal" th:attr="data-target='#a' + ${slot.slotID}" th:text="${slot.startTime}">
+                    </button>
+    <!--                <div th:switch="${slot.isAvailable}">-->
+    <!--                <span th:case="${true}">-->
+    <!--                <button type="button" class="btn active" data-toggle="modal" th:attr="data-target='#a' + ${slot.slotID}" th:text="${slot.startTime}">-->
+    <!--                </button>-->
+    <!--                    </span>-->
+    <!--                    <span th:case="${false}">-->
+    <!--                <button type="button" class="btn disabled" data-toggle="modal" th:attr="data-target='#a' + ${slot.slotID}" th:text="${slot.startTime}">-->
+    <!--                </button>-->
+    <!--                    </span>-->
+    <!--                </div>-->
+
+                    <!-- Modal -->
+                    <div class="modal fade" th:id="'a' + ${slot.slotID}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel" th:text="${slot.startTime} + ' - ' + ${slot.endTime}"></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <span>Boka pingisbordet med utrustning.</span>
+                                </div>
+                                <div class="modal-footer">
+                                    <form th:action="'/booking/' + ${slot.slotID}" method="post">
+                                        <input class="btn btn-primary mt-3" type="submit" value="Boka"/>
+                                    </form>
+                                    <!--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+                                    <!--                <button type="button" class="btn btn-primary">Save changes</button>-->
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-3"></div>
-<!--        </div>-->
+                <div class="col-3"></div>
+    <!--        </div>-->
+        </div>
     </div>
-</div>
 </div>
 
 
