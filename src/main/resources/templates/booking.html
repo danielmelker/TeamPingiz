@@ -10,13 +10,13 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="booking.css">
 </head>
 <body>
 
 <!-- Button trigger modal -->
 <div class="modalID" th:each="slot : ${bookingList}">
-<button type="button" class="btn btn-primary" data-toggle="modal" th:attr="data-target='#a' + ${slot.slotID}" th:text="${slot.startTime}">
+<button type="button" class="btn" data-toggle="modal" th:attr="data-target='#a' + ${slot.slotID}" th:text="${slot.startTime}">
 </button>
 
 <!-- Modal -->
