@@ -1,37 +1,40 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Pingiz - Login</title>
+    <title>Pingiz - Edit profile</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
 <div class="wrapper d-flex align-items-stretch">
+
     <div th:replace="index :: sidebar" ></div>
 
-<!-- Page Content  -->
+    <!-- Page Content  -->
     <div id="content" class="p-4 p-md-5 pt-5">
 
         <div class="container text-center" style="width: 500px">
-            <h1 class="display-3">Log in</h1>
+            <h1 class="display-4">Registered users: </h1>
 
 
-            <form action="/login" method="POST">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text"  name="username" id="username" class="" />
-                    <br>
-                    <label for="password">Password</label>
-                    <input type="password"  name="password" id="password" class="" />
-                    <br>
-                    <input class="btn btn-primary mt-3" type="submit"/>
-                </div>
-            </form>
+
+            <div class="list-group">
+                <a th:each="user : ${users}" href="#" class="list-group-item list-group-item-action flex-column align-items-start active m-1">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">[[${user.username}]]</h5>
+                    </div>
+                    <p class="mb-1">[[${user.description}]]</p>
+                    <small>Pingis enthusiast</small>
+                </a>
+            </div>
 
 
         </div>

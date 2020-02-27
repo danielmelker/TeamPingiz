@@ -35,5 +35,6 @@ public class AuthResponse {
     public boolean isValid(){
         return type == type.VALID;
     }
+    public ResponseType getType(){return type; }
 }
 

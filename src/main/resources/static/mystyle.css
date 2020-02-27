@@ -1,5 +1,5 @@
 html,body {
-  background: url(images/pingiz-background.jpg) no-repeat center center fixed;
+  background: url(images/pingiz3.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -66,6 +66,9 @@ font-family: Pridi;
     border-radius: 50%;
     /* border-radius: 50%; */
     /*border: 2px solid white;*/
+}
+form_container2{
+    margin-top:5px;
 }
 .form_container {
     margin-top: 100px;

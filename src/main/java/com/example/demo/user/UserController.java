@@ -2,6 +2,7 @@ package com.example.demo.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,18 +29,16 @@ public class UserController {
 
     @GetMapping("/editProfile")
     public String editProfile(HttpSession session){
-        if(session.getAttribute("validated")==null){
-            return "login";
-        }
 
-        if((boolean)session.getAttribute("validated")){
+
+        if(session.getAttribute("validated") != null && (boolean)session.getAttribute("validated")){
             User u = userService.getUser((String)session.getAttribute("currentUser"));
 
             session.setAttribute("userDescription", u.getDescription());
             return "editProfile";
         }
 
-        return "login";
+        return "redirect:/login";
     }
 
     @PostMapping("/editProfile")
@@ -87,6 +86,35 @@ public class UserController {
             return "redirect:/login";
         }
 
+    }
+
+
+    @GetMapping("/register")
+    public String register(HttpSession session){
+        return "register";
+    }
+
+
+    @PostMapping("/register")
+    public String register(HttpSession session, @RequestParam(name="username") String username,
+                        @RequestParam(name="password") String password){
+
+        boolean userCreated = userService.register(User.of(username,password));
+
+        if(userCreated){
+            return "redirect:/login";
+        } else {
+            return "redirect:/register";
+        }
+
+    }
+
+    @GetMapping("/users")
+    public String getUsers(HttpSession session, Model model){
+
+        var users = userService.getUsers();
+        model.addAttribute("users", users);
+        return "viewUsers";
     }
 
 
