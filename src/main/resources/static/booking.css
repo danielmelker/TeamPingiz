@@ -1,36 +1,46 @@
 .modalID {
 }
 
+
 .container{
     margin-top: 70px;
 }
 
 h1{
     color: #CC0E00;
+    font-family: 'Pridi', Arial;
+    font-size:5vw;
+}
+
+p{
+    font-family: Arial, helvetica;
+    color: black;
+    font-size:1.5vw;
 }
 
 .btn {
     margin-bottom: 20px;
     background-color: #CC0E00;
     transition-duration: 0.4s;
+    font-size: 1.5vw;
+    color: white;
 }
 
 .btn:hover {
   background-color: rgb(252, 160, 153);
   color: black;
+  font-size: 1.5vw;
 }
 
 .btn-secondary{
 color: black;
 background-color: grey;
+font-size: 1.5vw;
 }
 
 .btn-secondary:hover{
 color: black;
 background-color: grey;
+font-size: 1.5vw;
 }
 
-.btn-secondary:onclick{
-color: black;
-background-color: grey;
-}

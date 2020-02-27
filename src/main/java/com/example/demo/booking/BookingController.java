@@ -21,8 +21,14 @@ public class BookingController {
     UserService userService;
 
     @GetMapping("/booking")
-    String getBooking(Model model){
+    String getBooking(Model model, HttpSession session){
         model.addAttribute("bookingList", bookingService.getBookingRep().getBookingSlotList());
+        if(session.getAttribute("validated") ==null){
+            session.setAttribute("validated",false);
+        }
+//        if(session.getAttribute("validated") != null && (boolean)session.getAttribute("validated")){
+//
+//        }
         return "booking";
     }
 
