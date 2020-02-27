@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Booking</title>
 
+    <link href="https://fonts.googleapis.com/css?family=Pridi&display=swap" rel="stylesheet">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,8 +24,8 @@
     <div th:replace="index :: sidebar" ></div>
 
     <div class="container">
-            <h1>Bokning</h1>
-            <p>Klicka på den tid du önskar boka pingisbordet. Du kan endast boka en timme åt gången.</p>
+            <h1><b>Book the Pingiz table</b></h1>
+            <p>Click the time you want to book. Time slots in grey are unavailable.<br>You can only book one hour at the time.<br>You must cancel your booking the latest an hour before.</p>
 
     <div class="row">
 
@@ -43,11 +44,11 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <span>Boka pingisbordet med utrustning.</span>
+                                    <span>Book the Pingiz table with equipment</span>
                                 </div>
                                 <div class="modal-footer">
                                     <form th:action="'/booking/' + ${slot.slotID}" method="post">
-                                        <input class="btn btn-primary mt-3" type="submit" value="Boka"/>
+                                        <input class="btn" type="submit" value="Book"/>
                                     </form>
                                     <!--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
                                     <!--                <button type="button" class="btn btn-primary">Save changes</button>-->
