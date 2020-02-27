@@ -1,7 +1,21 @@
 .modalID {
 }
 
+.container{
+    margin-top: 70px;
+}
+
+h1, p {
+    color: #CC0E00;
+}
+
 .btn {
     margin-bottom: 20px;
-    background-color: red;
+    background-color: #CC0E00;
+    transition-duration: 0.4s;
+}
+
+.btn:hover {
+  background-color: rgb(252, 160, 153);
+  color: black;
 }
