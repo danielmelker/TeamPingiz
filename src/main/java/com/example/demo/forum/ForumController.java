@@ -30,10 +30,11 @@ public class ForumController {
 
 
     @GetMapping("/forum")
-    public String showForum(HttpSession session, @RequestParam(required = false, defaultValue = "1") Integer page, Model model){
+    public String showForum(HttpSession session, @RequestParam(required = false, defaultValue = "0") Integer page, Model model){
         session.setAttribute("postsAtt", forumRepository.forumPostList);
         model.addAttribute("page",page);
         model.addAttribute("currentPage",page);
+        model.addAttribute("show",forumRepository.splitIntoPages(page));
         return "forum";
     }
 

@@ -55,7 +55,7 @@
 <a th:href="'/forum/' + '?page=' + ${currentPage+1}">Click here</a>
 
 
-            <ul th:each="listann : ${session.show}">
+            <ul th:each="listann : ${show}">
 <li th:text="${listann.datePosted}"></li>
 
             </ul>
