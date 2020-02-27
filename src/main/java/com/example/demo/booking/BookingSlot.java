@@ -1,5 +1,7 @@
 package com.example.demo.booking;
 
+import com.example.demo.user.User;
+
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -10,6 +12,8 @@ public class BookingSlot {
     private LocalTime startTime;
     private LocalTime endTime;
     private int slotID;
+
+    private User bookedBy = null;
 
     public BookingSlot (LocalTime startTime, LocalTime endTime, int slotID){
         this.startTime = startTime;
@@ -48,5 +52,13 @@ public class BookingSlot {
 
     public void setEndTime(LocalTime endTime) {
         this.endTime = endTime;
+    }
+
+    public User getBookedBy() {
+        return bookedBy;
+    }
+
+    public void setBookedBy(User bookedBy) {
+        this.bookedBy = bookedBy;
     }
 }
