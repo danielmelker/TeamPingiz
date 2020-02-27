@@ -30,9 +30,10 @@
                         <img th:src="@{/images/logo2.jpg}"  class="brand_logo" alt="Logo">
                     </div>
                 </div>
-                <h2 class="masthead">Log in</h2>
+                <h2 class="masthead">Register</h2>
                 <div class="d-flex justify-content-center form_container2">
-                    <form action="/login" method="POST">
+                    <br>
+                    <form action="/register" method="POST">
                         <div class="input-group mb-3">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -47,7 +48,7 @@
                         </div>
 
                         <div class="d-flex justify-content-center mt-3 login_container">
-                            <input class="btn login_btn" type="submit" text="Login"/>
+                            <input class="btn login_btn" type="submit" text="Register"/>
 <!--                            <button type="button" name="button" class="btn ">Login</button>-->
                         </div>
                     </form>
@@ -55,7 +56,7 @@
 
                 <div class="mt-4">
                     <div class="d-flex justify-content-center links">
-                        Don't have an account? <a href="/register" class="ml-2">Sign Up</a>
+                        Already have an account? <a href="\login" class="ml-2">Log in</a>
                     </div>
                 </div>
             </div>
