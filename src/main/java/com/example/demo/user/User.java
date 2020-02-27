@@ -13,12 +13,22 @@ public class User {
     private long id;
 
     private String description;
+    private String academyClass;
     private String fileURL;
+
+    public String getAcademyClass() {
+        return academyClass;
+    }
+
+    public void setAcademyClass(String academyClass) {
+        this.academyClass = academyClass;
+    }
 
     private User(String username, String password) {
         this.username = username;
         this.password = password;
         this.description = "no description entered...";
+        this.academyClass = "not specified";
 
         this.fileURL="https://upload.wikimedia.org/wikipedia/commons/4/4e/Shakehand1.jpg";
 
