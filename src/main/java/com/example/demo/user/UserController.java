@@ -34,6 +34,8 @@ public class UserController {
         if(session.getAttribute("validated") != null && (boolean)session.getAttribute("validated")){
             User u = userService.getUser((String)session.getAttribute("currentUser"));
 
+
+            session.setAttribute("userImg", u.getFileURL());
             session.setAttribute("userDescription", u.getDescription());
             return "editProfile";
         }
@@ -42,7 +44,9 @@ public class UserController {
     }
 
     @PostMapping("/editProfile")
-    public String editProfile(HttpSession session, @RequestParam(name="description") String description,
+    public String editProfile(HttpSession session,
+                              @RequestParam(name="description") String description,
+                              @RequestParam(name="imgFileURL") String imgFileURL,
                               @RequestParam(name="password", defaultValue="") String password){
         if(session.getAttribute("validated")==null){
             return "index";
@@ -53,6 +57,8 @@ public class UserController {
 
             session.setAttribute("userDescription", description);
             u.setDescription(description);
+            u.setFileURL(imgFileURL);
+            session.setAttribute("userImg", u.getFileURL());
 
             if(password != null && !password.equals("")){
                 u.setPassword(password);
