@@ -67,7 +67,7 @@ public class UserController {
 
     @GetMapping("/login")
     public String login(HttpSession session){
-        return "login";
+        return "login2";
     }
 
 
@@ -80,11 +80,11 @@ public class UserController {
         if(response.isValid()){
             session.setAttribute("currentUser", username );
             session.setAttribute("validated", true);
-            return "redirect:index";
+            return "redirect:/";
         } else {
             session.setAttribute("currentUser", "");
             session.setAttribute("validated", false);
-            return "login";
+            return "redirect:/login";
         }
 
     }
@@ -94,7 +94,7 @@ public class UserController {
     public String logout(HttpSession session){
         session.setAttribute("currentUser", "");
         session.setAttribute("validated", false);
-        return "landingPage";
+        return "redirect:/";
     }
 
 
