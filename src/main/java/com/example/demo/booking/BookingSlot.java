@@ -18,7 +18,7 @@ public class BookingSlot {
         isAvailable = true;
     }
 
-    public boolean isAvailable() {
+    public boolean getIsAvailable() {
         return isAvailable;
     }
 
