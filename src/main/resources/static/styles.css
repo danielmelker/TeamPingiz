@@ -8207,14 +8207,14 @@ h1, h2, h3, h4, h5,
     #sidebar.active .custom-menu {
       margin-right: -50px; }
   #sidebar h1 {
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     font-weight: 700;
     font-size: 20px; }
     #sidebar h1 .logo {
       color: #fff;
       display: block;
-      padding: 10px 30px;
-      background: #2f89fc; }
+      padding: 0;
+      background: black; }
   #sidebar ul.components {
     padding: 0; }
   #sidebar ul li {
