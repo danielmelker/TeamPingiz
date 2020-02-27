@@ -19,4 +19,9 @@ public class ForumRepository {
 public List<ForumPost> getForumPostList(){
     return forumPostList;
 }
+
+public List<ForumPost> splitIntoPages(int to){
+
+        return forumPostList.subList(0,to);
+}
 }

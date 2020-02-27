@@ -30,15 +30,27 @@ public class ForumController {
 
 
     @GetMapping("/forum")
-    public String showForum(HttpSession session){
+    public String showForum(HttpSession session, @RequestParam(required = false, defaultValue = "1") Integer page, Model model){
         session.setAttribute("postsAtt", forumRepository.forumPostList);
+        model.addAttribute("page",page);
+        model.addAttribute("currentPage",page);
+        return "forum";
+    }
+
+    @GetMapping("/forum/{page}")
+    public String showForum1(HttpSession session, @RequestParam(required = false, defaultValue = "1") Integer page, Model model){
+        session.setAttribute("postsAtt", forumRepository.forumPostList);
+        model.addAttribute("page",page);
+        model.addAttribute("currentPage",page);
+        model.addAttribute("show",forumRepository.splitIntoPages(2));
         return "forum";
     }
 
 
 
+
     @PostMapping("/forum")
-    public String postToForum(@RequestParam String inputText, HttpSession session){
+    public String postToForum(Model model,@RequestParam(required = false, defaultValue = "") String inputText, HttpSession session,@RequestParam(required = false, defaultValue = "1") Integer page){
         String currentUser = (String)session.getAttribute("currentUser");
 
         forumRepository.forumPostList.add(new ForumPost(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM - yyyy")),
@@ -46,6 +58,10 @@ public class ForumController {
                 currentUser));
 
         session.setAttribute("postsAtt",forumRepository.forumPostList);
+
+
+        model.addAttribute("page",page);
+        model.addAttribute("currentPage",page);
 
         return "forum";
     }
