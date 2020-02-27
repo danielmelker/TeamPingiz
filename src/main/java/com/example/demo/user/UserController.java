@@ -80,7 +80,7 @@ public class UserController {
         if(response.isValid()){
             session.setAttribute("currentUser", username );
             session.setAttribute("validated", true);
-            return "index";
+            return "redirect:index";
         } else {
             session.setAttribute("currentUser", "");
             session.setAttribute("validated", false);
@@ -94,7 +94,7 @@ public class UserController {
     public String logout(HttpSession session){
         session.setAttribute("currentUser", "");
         session.setAttribute("validated", false);
-        return "welcomePage";
+        return "landingPage";
     }
 
 

@@ -5,13 +5,20 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class TeamPingizController {
 
-@GetMapping
-    String showIndex(){
 
-    return "index";
-}
+
+    @GetMapping
+    public String showIndex(HttpSession session) {
+        if (session.getAttribute("validated") != null && (boolean) session.getAttribute("validated")) {
+            return "index";
+        } else {
+            return "landingPage";
+        }
+    }
 
 }

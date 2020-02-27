@@ -1,0 +1,35 @@
+html,body {
+  background: url(images/pingiz-background.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.masthead {
+  font-family: Pridi ;
+  position: relative;
+
+   text-align:center;
+
+    background-color: rgba(150,150,150,0.7);
+    color:red;
+
+
+}
+
+.masthead h1 {
+font-family: Pridi;
+  font-size: 3 rem;
+
+}
+
+.masthead h2 {
+  max-width: 20rem;
+  font-size: 1rem;
+}
+
+.top-filler{
+  height:120px;
+}
+
