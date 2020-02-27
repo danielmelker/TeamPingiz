@@ -67,6 +67,9 @@ font-family: Pridi;
     /* border-radius: 50%; */
     /*border: 2px solid white;*/
 }
+form_container2{
+    margin-top:5px;
+}
 .form_container {
     margin-top: 100px;
 }
