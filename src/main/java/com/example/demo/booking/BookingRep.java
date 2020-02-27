@@ -48,4 +48,5 @@ public class BookingRep {
     public void setBookingSlotList(List<BookingSlot> bookingSlotList) {
         this.bookingSlotList = bookingSlotList;
     }
+
 }
