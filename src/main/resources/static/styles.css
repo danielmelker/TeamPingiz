@@ -8331,3 +8331,8 @@ a[data-toggle="collapse"] {
 .subscribe-form .form-control {
   background: #4897fc; }
 
+img {
+  border-radius: 20px;
+  border: 6px solid black;
+}
+
