@@ -4425,8 +4425,8 @@ input[type="button"].btn-block {
   .list-group-item.active {
     z-index: 2;
     color: #fff;
-    background-color: #007bff;
-    border-color: #007bff; }
+    background-color: #CC0E00;
+    border-color: #CC0E00; }
 
 .list-group-horizontal {
   -webkit-box-orient: horizontal;
