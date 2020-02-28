@@ -1,9 +1,6 @@
-package com.example.demo.forum;
+package com.academy.pingiz.forum;
 
-import com.example.demo.user.User;
 import org.springframework.stereotype.Service;
-
-import javax.servlet.http.HttpSession;
 
 @Service
 public class ForumPost {

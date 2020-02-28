@@ -1,10 +1,8 @@
-package com.example.demo;
+package com.academy.pingiz;
 
-import com.example.demo.booking.BookingService;
-import com.example.demo.user.User;
+import com.academy.pingiz.booking.BookingService;
+import com.academy.pingiz.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,9 +1,8 @@
-package com.example.demo.booking;
+package com.academy.pingiz.booking;
 
-import com.example.demo.user.User;
+import com.academy.pingiz.user.User;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class BookingSlot {

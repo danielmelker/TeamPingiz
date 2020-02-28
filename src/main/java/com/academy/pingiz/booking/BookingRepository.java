@@ -1,18 +1,12 @@
-package com.example.demo.booking;
+package com.academy.pingiz.booking;
 
-import com.example.demo.user.User;
+import com.academy.pingiz.user.User;
 import org.springframework.stereotype.Repository;
 
-import java.awt.print.Book;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-
-import static java.util.Calendar.HOUR;
-import static java.util.Calendar.HOUR_OF_DAY;
 
 @Repository
 public class BookingRepository {
