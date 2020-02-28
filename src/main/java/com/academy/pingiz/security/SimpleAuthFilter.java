@@ -1,4 +1,4 @@
-package com.example.demo.security;
+package com.academy.pingiz.security;
 
 
 import java.io.IOException;
@@ -14,8 +14,6 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.core.annotation.Order;
-import org.springframework.stereotype.Component;
 
 
 public class SimpleAuthFilter implements Filter {

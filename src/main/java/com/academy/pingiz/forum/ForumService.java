@@ -1,4 +1,4 @@
-package com.example.demo.forum;
+package com.academy.pingiz.forum;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

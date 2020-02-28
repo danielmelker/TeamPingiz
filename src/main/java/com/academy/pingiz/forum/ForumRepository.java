@@ -1,4 +1,4 @@
-package com.example.demo.forum;
+package com.academy.pingiz.forum;
 
 import org.springframework.stereotype.Repository;
 
