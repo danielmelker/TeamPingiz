@@ -31,10 +31,6 @@ public class BookingSlot {
         return date;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
     public void setAvailable(boolean available) {
         isAvailable = available;
     }
@@ -43,25 +39,14 @@ public class BookingSlot {
         return slotID;
     }
 
-    public void setSlotID(int slotID) {
-        this.slotID = slotID;
-    }
-
     public LocalTime getStartTime() {
         return startTime;
-    }
-
-    public void setStartTime(LocalTime startTime) {
-        this.startTime = startTime;
     }
 
     public LocalTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalTime endTime) {
-        this.endTime = endTime;
-    }
 
     public User getBookedBy() {
         return bookedBy;

@@ -1,5 +1,6 @@
 package com.example.demo.booking;
 
+import com.example.demo.user.User;
 import org.springframework.stereotype.Repository;
 
 import java.awt.print.Book;
@@ -14,12 +15,12 @@ import static java.util.Calendar.HOUR;
 import static java.util.Calendar.HOUR_OF_DAY;
 
 @Repository
-public class BookingRep {
+public class BookingRepository {
 
     private List<BookingSlot> bookingSlotList = new ArrayList<>();
     //Calendar calendar = Calendar.getInstance();
 
-    public BookingRep (){
+    public BookingRepository(){
         createSlots();
     }
 
@@ -53,5 +54,16 @@ public class BookingRep {
     public void setBookingSlotList(List<BookingSlot> bookingSlotList) {
         this.bookingSlotList = bookingSlotList;
     }
+
+    public List<BookingSlot> getSlotsBookedBy(User user){
+        List<BookingSlot> slots = new ArrayList<>();
+        for(BookingSlot slot: bookingSlotList){
+            if(slot.getBookedBy()!= null && user.getUsername().equals(slot.getBookedBy().getUsername())){
+                slots.add(slot);
+            }
+        }
+        return slots;
+    }
+
 
 }
