@@ -15,7 +15,7 @@ public class ForumService {
     public int postNum=0;
 
     @Autowired
-    ForumRepository forumRepository;
+    private ForumRepository forumRepository;
 
 
 
