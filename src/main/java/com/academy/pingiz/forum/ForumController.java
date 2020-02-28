@@ -1,5 +1,6 @@
 package com.academy.pingiz.forum;
 
+import com.academy.pingiz.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,20 +24,32 @@ public class ForumController {
 
     @GetMapping("/forum")
     public String showForum(HttpSession session, @RequestParam(required = false, defaultValue = "0") Integer page, Model model){
-        session.setAttribute("postsAtt", forumRepository.getForumPostList());
-        model.addAttribute("page",page);
-        model.addAttribute("currentPage",page);
-        model.addAttribute("show",forumRepository.splitIntoPages(page));
-        return "forum";
+
+        if (session.getAttribute("validated") != null && (boolean) session.getAttribute("validated")) {
+            session.setAttribute("postsAtt", forumRepository.getForumPostList());
+            model.addAttribute("page",page);
+            model.addAttribute("currentPage",page);
+            model.addAttribute("show",forumRepository.splitIntoPages(page));
+            return "forum";
+        } else {
+            return "landingPage";
+        }
     }
 
     @GetMapping("/forum/{page}")
     public String showForum1(HttpSession session, @RequestParam(required = false, defaultValue = "1") Integer page, Model model){
-        session.setAttribute("postsAtt", forumRepository.getForumPostList());
-        model.addAttribute("page",page);
-        model.addAttribute("currentPage",page);
-        model.addAttribute("show",forumRepository.splitIntoPages(2));
-        return "forum";
+        if (session.getAttribute("validated") != null && (boolean) session.getAttribute("validated")) {
+            session.setAttribute("postsAtt", forumRepository.getForumPostList());
+            model.addAttribute("page",page);
+            model.addAttribute("currentPage",page);
+            model.addAttribute("show",forumRepository.splitIntoPages(2));
+            return "forum";
+        } else {
+            return "landingPage";
+        }
+
+
+
     }
 
 
@@ -46,9 +59,9 @@ public class ForumController {
     public String postToForum(Model model,@RequestParam(required = false, defaultValue = "") String inputText, HttpSession session,@RequestParam(required = false, defaultValue = "1") Integer page){
 
         //String currentUser = (String)session.getAttribute("currentUser");
-
-        forumService.addPost(session,inputText);
-        forumService.sortPosts();
+        if (session.getAttribute("validated") != null && (boolean) session.getAttribute("validated")) {
+            forumService.addPost(session, inputText);
+            forumService.sortPosts();
 
        /* forumRepository.forumPostList.add(new ForumPost(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM - yyyy")),
                 LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")),inputText,
@@ -57,12 +70,15 @@ public class ForumController {
      /*   forumRepository.forumPostList.sort(Comparator.comparingInt(ForumPost::getPostNum));
         Collections.reverse(forumRepository.forumPostList);*/
 
-        session.setAttribute("postsAtt",forumRepository.getForumPostList());
+            session.setAttribute("postsAtt", forumRepository.getForumPostList());
 
 
-        model.addAttribute("page",page);
-        model.addAttribute("currentPage",page);
+            model.addAttribute("page", page);
+            model.addAttribute("currentPage", page);
 
-        return "forum";
+            return "forum";
+        }else {
+            return "redirect:/landingPage";
+        }
     }
 }

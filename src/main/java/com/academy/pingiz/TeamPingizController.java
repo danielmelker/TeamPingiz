@@ -18,7 +18,6 @@ public class TeamPingizController {
     @GetMapping
     public String showIndex(HttpSession session, Model model) {
         if (session.getAttribute("validated") != null && (boolean) session.getAttribute("validated")) {
-
             User user = (User)session.getAttribute("user");
             var slots = bookingService.getSlotsBookedBy(user);
             model.addAttribute("bookedSlots", slots);
