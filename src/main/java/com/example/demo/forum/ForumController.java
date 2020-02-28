@@ -15,10 +15,7 @@ import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 
 @Controller
@@ -57,6 +54,9 @@ public class ForumController {
         forumRepository.forumPostList.add(new ForumPost(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM - yyyy")),
                 LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")),inputText,
                 currentUser));
+
+        forumRepository.forumPostList.sort(Comparator.comparingInt(ForumPost::getPostNum));
+        Collections.reverse(forumRepository.forumPostList);
 
         session.setAttribute("postsAtt",forumRepository.forumPostList);
 

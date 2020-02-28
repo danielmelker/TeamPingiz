@@ -11,7 +11,7 @@ public class ForumPost {
     public String datePosted;
     public String timePosted;
     public String thePost;
-    public int postNum;
+    public static int postNum;
     public String postedBy;
 
     public ForumPost(String datePosted, String timePosted, String thePost, String poster){
@@ -19,9 +19,9 @@ public class ForumPost {
         this.datePosted = datePosted;
         this.timePosted = timePosted;
         this.thePost = thePost;
-        this.postNum = postNum++;
+        this.postNum = postNum+1;
         this.postedBy = poster;
-
+        System.out.println(this.postNum);
     }
 
     public int getPostNum() {
