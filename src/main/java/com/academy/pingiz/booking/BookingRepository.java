@@ -25,14 +25,6 @@ public class BookingRepository {
         }
     }
 
-    public List<BookingSlot> getBookingSlotList() {
-        return bookingSlotList;
-    }
-
-    public void setBookingSlotList(List<BookingSlot> bookingSlotList) {
-        this.bookingSlotList = bookingSlotList;
-    }
-
     public List<BookingSlot> getSlotsBookedBy(User user){
         List<BookingSlot> slots = new ArrayList<>();
         for(BookingDay day: allDays){
@@ -49,8 +41,18 @@ public class BookingRepository {
         return allDays;
     }
 
+    public List<BookingSlot> getAllSlots(){
+        List<BookingSlot> allSlots = new ArrayList<>();
+        for(BookingDay day : allDays){
+            for(BookingSlot slot : day.getBookingSlotList()){
+                allSlots.add(slot);
+            }
+        }
+        return allSlots;
+    }
+
     public BookingSlot getSlotById(int id){
-        return bookingSlotList.stream().filter(t -> t.getSlotID()==id).findFirst().get();
+        return getAllSlots().stream().filter(t -> t.getSlotID()==id).findFirst().get();
 
     }
 

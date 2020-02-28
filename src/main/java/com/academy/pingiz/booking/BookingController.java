@@ -26,6 +26,7 @@ public class BookingController {
         model.addAttribute("bookingDay", bookingService.getBookingRep().getAllDays().get(bookingPage));
         model.addAttribute("allDays", bookingService.getBookingRep().getAllDays());
         model.addAttribute("currentPage", bookingPage);
+        model.addAttribute("currentDate", bookingService.getBookingRep().getAllDays().get(bookingPage).getDate());
         model.addAttribute("numOfDays", bookingService.numberOfBookingDays());
         if(session.getAttribute("validated") == null){
             session.setAttribute("validated",false);
