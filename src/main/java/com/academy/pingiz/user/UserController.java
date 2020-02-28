@@ -1,5 +1,7 @@
 package com.academy.pingiz.user;
 
+import com.academy.pingiz.matchTracker.Match;
+import com.academy.pingiz.matchTracker.MatchService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +15,7 @@ import java.util.stream.Stream;
 public class UserController {
 
     private UserService userService;
+
 
     public UserController(UserService userService){
         this.userService = userService;
