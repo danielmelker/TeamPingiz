@@ -1,6 +1,27 @@
-
 .column{
 width: 600px;
 margin: 40px auto;
 text-align: center;
+}
+
+h1{
+    color: #CC0E00;
+    font-family: 'Pridi', Arial;
+}
+
+h2, h3 {
+    color: #CC0E00;
+    font-family: 'Pridi', Arial;
+}
+
+p {
+    color: black;
+}
+
+a {
+   color: #CC0E00;
+}
+
+a:hover {
+    color: green;
 }

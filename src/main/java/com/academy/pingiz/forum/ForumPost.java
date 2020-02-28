@@ -5,11 +5,27 @@ import org.springframework.stereotype.Service;
 @Service
 public class ForumPost {
 
-    public String datePosted;
-    public String timePosted;
-    public String thePost;
-    public int postNum;
-    public String postedBy;
+    private String datePosted;
+    private String timePosted;
+    private String thePost;
+    private int postNum;
+    private String postedBy;
+
+    public String getDatePosted() {
+        return datePosted;
+    }
+
+    public String getTimePosted() {
+        return timePosted;
+    }
+
+    public String getThePost() {
+        return thePost;
+    }
+
+    public String getPostedBy() {
+        return postedBy;
+    }
 
     public ForumPost(String datePosted, String timePosted, String thePost, String poster, int postNum){
 

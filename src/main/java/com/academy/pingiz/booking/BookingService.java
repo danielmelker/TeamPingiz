@@ -43,4 +43,12 @@ public class BookingService {
     public List<BookingSlot> getSlotsBookedBy(User user){
         return bookingRep.getSlotsBookedBy(user);
     }
+
+    public void cancelBooking(int id){
+        BookingSlot slot = bookingRep.getSlotById(id);
+        if(!slot.getIsAvailable()){
+            slot.unbook();
+        }
+    }
+
 }

@@ -3,7 +3,7 @@ package com.academy.pingiz.booking;
 import com.academy.pingiz.user.User;
 import org.springframework.stereotype.Repository;
 
-import java.awt.print.Book;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -25,6 +25,13 @@ public class BookingRepository {
         }
     }
 
+    public List<BookingSlot> getBookingSlotList() {
+        return bookingSlotList;
+    }
+
+    public void setBookingSlotList(List<BookingSlot> bookingSlotList) {
+        this.bookingSlotList = bookingSlotList;
+    }
 
     public List<BookingSlot> getSlotsBookedBy(User user){
         List<BookingSlot> slots = new ArrayList<>();
@@ -40,6 +47,11 @@ public class BookingRepository {
 
     public List<BookingDay> getAllDays() {
         return allDays;
+    }
+
+    public BookingSlot getSlotById(int id){
+        return bookingSlotList.stream().filter(t -> t.getSlotID()==id).findFirst().get();
+
     }
 
     public void setAllDays(List<BookingDay> allDays) {

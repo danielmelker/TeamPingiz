@@ -22,20 +22,28 @@ public class UserController {
 
     private void setupTestUsers(){
         //debugging: create two test-users.
-        User u = User.of("test", "pass");
         User u1 = User.of("Jacob", "pass");
         User u2 = User.of("Elvira", "pass");
         User u3 = User.of("Caroline", "pass");
         User u4 = User.of("Daniel", "pass");
         User u5 = User.of("Christoffer", "pass");
 
-        Stream.of(u,u1,u2,u3,u4,u5).forEach(user -> user.setAcademyClass("Java")) ;
-        Stream.of(u,u1,u2,u3,u4,u5).forEach(user -> user.setDescription("Pingiz developer and ping-pong master!")) ;
+        User andreas = User.of("Andreas", "pass");
+
+        Stream.of(u1,u2,u3,u4,u5).forEach(user -> user.setAcademyClass("Java")) ;
+        Stream.of(u1,u2,u3,u4,u5).forEach(user -> user.setDescription("Pingiz developer and ping-pong master!")) ;
         u4.setFileURL("https://upload.wikimedia.org/wikipedia/commons/5/53/Donald_Trump_official_portrait_%28cropped%29.jpg");
         u4.setDescription("Make Pingis Great Again!");
+        u5.setFileURL("https://www.captionthis.org/image.php?caption_id=c6605");
 
-        u5.setFileURL("https://media-exp1.licdn.com/dms/image/C4D03AQHAuUy7IJsm_w/profile-displayphoto-shrink_200_200/0?e=1586390400&v=beta&t=_5Q0DcIwGkMulRZaIISS775N1-WgP4u9xawCU0C-Y_Y");
-        userService.register(u,u1,u2,u3,u4,u5);
+        u1.setFileURL("https://pbs.twimg.com/profile_images/1134082549041393672/QbihPzrL_400x400.png");
+        u2.setFileURL("https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Boris_Johnson_official_portrait_%28cropped%29.jpg/330px-Boris_Johnson_official_portrait_%28cropped%29.jpg");
+        u3.setFileURL("https://www.theneweuropean.co.uk/polopoly_fs/1.6332927.1571650982!/image/image.jpg_gen/derivatives/landscape_1024/image.jpg");
+
+
+        andreas.setDescription("Java teacher and pingis enthusiast.");
+
+        userService.register(u1,u2,u3,u4,u5,andreas);
     }
 
 

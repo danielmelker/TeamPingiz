@@ -1,6 +1,13 @@
-
-
-
 .form-control{
     border: 1px solid gray;
+}
+
+h1 {
+    color: #CC0E00;
+    font-family: 'Pridi', Arial;
+    font-size:3vw;
+}
+
+p {
+    color: black;
 }
