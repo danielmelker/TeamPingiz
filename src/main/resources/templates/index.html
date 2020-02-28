@@ -66,12 +66,13 @@
                     <img th:src="${session.user.fileURL}" class="img img-fluid">
                 </div>
                 <div class="col-6">
-                    <h1 class="m-2"> [[${session.currentUser}]]</h1>
-                    <p class=""> [[${session.user.description}]]</p>
-                    <p class="mt-1">Academy class: [[${session.user.academyClass}]]</p>
+                    <h2 class="m-2">Welcome [[${session.currentUser}]]</h2>
+                    <h5 class=""> [[${session.user.description}]]</h5>
+                    <h5 class="mt-1">Academy class: [[${session.user.academyClass}]]</h5>
 
                 </div>
             </div>
+            <br><br>
 
             <div class="m-3 pt-2">
                 <div th:if="${bookedSlots.size() > 0 }">
