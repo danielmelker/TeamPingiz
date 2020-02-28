@@ -38,7 +38,7 @@ public class UserController {
 
         u1.setFileURL("https://pbs.twimg.com/profile_images/1134082549041393672/QbihPzrL_400x400.png");
         u2.setFileURL("https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Boris_Johnson_official_portrait_%28cropped%29.jpg/330px-Boris_Johnson_official_portrait_%28cropped%29.jpg");
-        u3.setFileURL("https://static.poder360.com.br/2020/02/Bolsonaro-Defesa-FerandoAzevedo-Ira-4-2-868x644.jpg");
+        u3.setFileURL("https://www.theneweuropean.co.uk/polopoly_fs/1.6332927.1571650982!/image/image.jpg_gen/derivatives/landscape_1024/image.jpg");
 
 
         andreas.setDescription("Java teacher and pingis enthusiast.");
