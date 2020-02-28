@@ -11,10 +11,6 @@ public class ForumRepository {
     List<String> postList = new ArrayList<>();
     List<ForumPost> forumPostList = new ArrayList<>();
 
-    public List<String> getPostList() {
-        return postList;
-    }
-
 
     public List<ForumPost> getForumPostList(){
         return forumPostList;

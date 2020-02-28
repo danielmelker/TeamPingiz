@@ -1,5 +1,6 @@
 package com.academy.pingiz.forum;
 
+import com.academy.pingiz.user.User;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -10,6 +11,9 @@ public class ForumPost {
     private String thePost;
     private int postNum;
     private String postedBy;
+
+    private User poster;
+
 
     public String getDatePosted() {
         return datePosted;
