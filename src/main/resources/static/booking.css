@@ -8,6 +8,17 @@ h1{
     font-size:5vw;
 }
 
+h2{
+    color: #CC0E00;
+    font-family: 'Pridi', Arial;
+    font-size:3vw;
+}
+
+h5{
+    /*color: #CC0E00;*/
+    font-family: 'Pridi', Arial;
+}
+
 p{
     font-family: Arial, helvetica;
     color: black;
