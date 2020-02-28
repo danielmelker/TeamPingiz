@@ -15,10 +15,10 @@ import javax.servlet.http.HttpSession;
 public class ForumController {
 
     @Autowired
-    ForumRepository forumRepository;
+    private ForumRepository forumRepository;
 
     @Autowired
-    ForumService forumService;
+    private ForumService forumService;
 
 
 
