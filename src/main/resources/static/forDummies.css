@@ -26,3 +26,8 @@ a {
 a:hover {
     color: green;
 }
+
+.vidStyle {
+    border-radius: 20px;
+     border: 6px solid #CC0E00;
+}
