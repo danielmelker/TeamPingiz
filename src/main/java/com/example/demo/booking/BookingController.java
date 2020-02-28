@@ -22,7 +22,7 @@ public class BookingController {
 
     @GetMapping("/booking")
     String getBooking(Model model, HttpSession session){
-        model.addAttribute("bookingList", bookingService.getBookingRep().getBookingSlotList());
+        model.addAttribute("bookingList", bookingService.getBookingRep().getAllSlots());
         if(session.getAttribute("validated") ==null){
             session.setAttribute("validated",false);
         }

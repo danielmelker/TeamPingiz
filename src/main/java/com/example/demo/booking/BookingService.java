@@ -18,6 +18,7 @@ public class BookingService {
         this.bookingRep = bookingRep;
     }
 
+
     public void setToBooked(int slotID, User booker) {
         for(BookingSlot slot : bookingRep.getBookingSlotList()){
             if(slot.getSlotID() == slotID){
