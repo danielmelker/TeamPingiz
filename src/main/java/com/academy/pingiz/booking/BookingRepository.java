@@ -60,4 +60,9 @@ public class BookingRepository {
     }
 
 
+    public BookingSlot getSlotById(int id){
+        return bookingSlotList.stream().filter(t -> t.getSlotID()==id).findFirst().get();
+
+    }
+
 }
