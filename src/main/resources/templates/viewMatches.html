@@ -26,34 +26,49 @@
     <!-- Page Content  -->
     <div id="content" class="p-4 p-md-5 pt-5">
 
-        <div class="container text-center" style="width: 500px">
-            <h1 class="display-4">Registered users: </h1>
+        <!-- Page Content  -->
+        <div id="content" class="p-4 p-md-5 pt-5 mt-5 w-75 text-center">
 
 
-
-            <div class="list-group">
-                <a th:each="user : ${users}" href="#" class="list-group-item list-group-item-action flex-column align-items-start active m-1">
-
-                    <div class="row">
-                        <div class="col-3">
-                            <img th:src="${user.fileURL}" class="img-fluid img-thumbnail " />
-                        </div>
-                        <div class="col-6">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h4 class="mb-1">[[${user.username}]]</h4>
-                            </div>
-
-                            <p class="mb-1">[[${user.description}]]</p>
-                            <small>Academy class: [[${user.academyClass}]] </small>
-                        </div>
-                    </div>
+            <div class="m-3 pt-2">
 
 
-                </a>
-            </div>
+                    <h3>
+                        Matches
+                    </h3>
+
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Time</th>
+                            <th scope="col">Team 1</th>
+                            <th scope="col">Team 2</th>
+                            <th scope="col">Result</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="match : ${matches}">
+                            <th scope="row">[[${match.timeString}]]</th>
+                            <td>
+                                <span th:each="user : ${match.team1}">[[${user.username}]] </span>
+                            </td>
+                            <td>
+                                <span th:each="user : ${match.team2}">[[${user.username}]] </span>
+                            </td>
+                            <td> [[${match.team1score}]] - [[${match.team2score}]]</td>
+
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+
 
 
         </div>
+
 
     </div>
 </div>

@@ -3,6 +3,7 @@ package com.academy.pingiz.matchTracker;
 import com.academy.pingiz.user.User;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -172,6 +173,12 @@ public class Match {
     public LocalDateTime getTime() {
         return time;
     }
+
+    public String getTimeString() {
+        return time.format(DateTimeFormatter.ofPattern("yyyy dd/MM - HH:mm"));
+
+    }
+
 
     public List<SetResult> getSetResults() {
         return setResults;
