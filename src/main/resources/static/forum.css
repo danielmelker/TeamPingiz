@@ -1,3 +1,9 @@
+.column{
+width: 600px;
+margin: 40px auto;
+text-align: center;
+}
+
 .card-header {
     background-color: #CC0E00;
     font-family: 'Pridi', Arial;
