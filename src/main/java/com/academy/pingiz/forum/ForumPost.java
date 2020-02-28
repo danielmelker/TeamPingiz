@@ -11,6 +11,22 @@ public class ForumPost {
     private int postNum;
     private String postedBy;
 
+    public String getDatePosted() {
+        return datePosted;
+    }
+
+    public String getTimePosted() {
+        return timePosted;
+    }
+
+    public String getThePost() {
+        return thePost;
+    }
+
+    public String getPostedBy() {
+        return postedBy;
+    }
+
     public ForumPost(String datePosted, String timePosted, String thePost, String poster, int postNum){
 
         this.datePosted = datePosted;
