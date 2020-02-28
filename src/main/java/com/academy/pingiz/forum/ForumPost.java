@@ -1,9 +1,6 @@
-package com.example.demo.forum;
+package com.academy.pingiz.forum;
 
-import com.example.demo.user.User;
 import org.springframework.stereotype.Service;
-
-import javax.servlet.http.HttpSession;
 
 @Service
 public class ForumPost {
@@ -14,14 +11,13 @@ public class ForumPost {
     public int postNum;
     public String postedBy;
 
-    public ForumPost(String datePosted, String timePosted, String thePost, String poster){
+    public ForumPost(String datePosted, String timePosted, String thePost, String poster, int postNum){
 
         this.datePosted = datePosted;
         this.timePosted = timePosted;
         this.thePost = thePost;
-        this.postNum = postNum++;
+        this.postNum = postNum;
         this.postedBy = poster;
-
     }
 
     public int getPostNum() {

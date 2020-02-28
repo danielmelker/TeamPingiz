@@ -1,4 +1,4 @@
-package com.example.demo.user;
+package com.academy.pingiz.user;
 
 
 public enum ResponseType{

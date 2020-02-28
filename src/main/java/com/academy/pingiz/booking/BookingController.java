@@ -1,7 +1,7 @@
-package com.example.demo.booking;
+package com.academy.pingiz.booking;
 
-import com.example.demo.user.User;
-import com.example.demo.user.UserService;
+import com.academy.pingiz.user.User;
+import com.academy.pingiz.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

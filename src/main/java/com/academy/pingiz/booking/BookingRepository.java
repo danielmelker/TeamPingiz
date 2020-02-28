@@ -1,5 +1,6 @@
-package com.example.demo.booking;
+package com.academy.pingiz.booking;
 
+import com.academy.pingiz.user.User;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class BookingRep {
+public class BookingRepository {
 
     private int startTime = 7;
     private int endTime = 19;
@@ -21,7 +22,7 @@ public class BookingRep {
     private List<BookingSlot> bookingSlotList2 = new ArrayList<>();
     private List<BookingSlot> bookingSlotList3 = new ArrayList<>();
 
-    public BookingRep (){
+    public BookingRepository (){
         createSlots1();
         createSlots2();
         createSlots3();
@@ -112,4 +113,16 @@ public class BookingRep {
     public void setAllSlots(List<List> allSlots) {
         this.allSlots = allSlots;
     }
+
+    public List<BookingSlot> getSlotsBookedBy(User user){
+        List<BookingSlot> slots = new ArrayList<>();
+        for(BookingSlot slot: bookingSlotList){
+            if(slot.getBookedBy()!= null && user.getUsername().equals(slot.getBookedBy().getUsername())){
+                slots.add(slot);
+            }
+        }
+        return slots;
+    }
+
+
 }

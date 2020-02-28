@@ -1,6 +1,5 @@
-package com.example.demo.user;
+package com.academy.pingiz.user;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,10 +33,9 @@ public class UserController {
         Stream.of(u,u1,u2,u3,u4,u5).forEach(user -> user.setDescription("Pingiz developer and ping-pong master!")) ;
         u4.setFileURL("https://upload.wikimedia.org/wikipedia/commons/5/53/Donald_Trump_official_portrait_%28cropped%29.jpg");
         u4.setDescription("Make Pingis Great Again!");
+
+        u5.setFileURL("https://media-exp1.licdn.com/dms/image/C4D03AQHAuUy7IJsm_w/profile-displayphoto-shrink_200_200/0?e=1586390400&v=beta&t=_5Q0DcIwGkMulRZaIISS775N1-WgP4u9xawCU0C-Y_Y");
         userService.register(u,u1,u2,u3,u4,u5);
-
-
-
     }
 
 

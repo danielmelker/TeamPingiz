@@ -1,9 +1,8 @@
-package com.example.demo.booking;
+package com.academy.pingiz.booking;
 
-import com.example.demo.user.User;
+import com.academy.pingiz.user.User;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class BookingSlot {
@@ -31,10 +30,6 @@ public class BookingSlot {
         return date;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
     public void setAvailable(boolean available) {
         isAvailable = available;
     }
@@ -43,25 +38,14 @@ public class BookingSlot {
         return slotID;
     }
 
-    public void setSlotID(int slotID) {
-        this.slotID = slotID;
-    }
-
     public LocalTime getStartTime() {
         return startTime;
-    }
-
-    public void setStartTime(LocalTime startTime) {
-        this.startTime = startTime;
     }
 
     public LocalTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalTime endTime) {
-        this.endTime = endTime;
-    }
 
     public User getBookedBy() {
         return bookedBy;
