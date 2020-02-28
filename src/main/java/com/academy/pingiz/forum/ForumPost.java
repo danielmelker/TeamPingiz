@@ -31,18 +31,21 @@ public class ForumPost {
         return postedBy;
     }
 
-    public ForumPost(String datePosted, String timePosted, String thePost, String poster, int postNum){
+    public ForumPost(String datePosted, String timePosted, String thePost, User poster, int postNum){
 
         this.datePosted = datePosted;
         this.timePosted = timePosted;
         this.thePost = thePost;
         this.postNum = postNum;
-        this.postedBy = poster;
+        this.postedBy = poster.getUsername();
+        this.poster = poster;
     }
 
     public int getPostNum() {
         return postNum;
     }
+
+    public User getPoster(){ return poster; }
 
     public void setPostNum(int postNum) {
         this.postNum = postNum;

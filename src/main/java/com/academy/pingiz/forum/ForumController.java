@@ -60,7 +60,10 @@ public class ForumController {
 
         //String currentUser = (String)session.getAttribute("currentUser");
         if (session.getAttribute("validated") != null && (boolean) session.getAttribute("validated")) {
-            forumService.addPost(session, inputText);
+
+            User poster =(User) session.getAttribute("user");
+
+            forumService.addPost(inputText, poster);
             forumService.sortPosts();
 
        /* forumRepository.forumPostList.add(new ForumPost(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM - yyyy")),

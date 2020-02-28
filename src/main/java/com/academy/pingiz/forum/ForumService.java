@@ -1,5 +1,6 @@
 package com.academy.pingiz.forum;
 
+import com.academy.pingiz.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,13 +20,15 @@ public class ForumService {
 
 
 
-        public void addPost(HttpSession session, String inputText){
-            String currentUser = (String)session.getAttribute("currentUser");
+        public void addPost(String inputText, User poster){
             postNum++;
             forumRepository.forumPostList.sort(Comparator.comparingInt(ForumPost::getPostNum));
-            forumRepository.forumPostList.add(new ForumPost(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM - yyyy")),
-                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")),inputText,
-                    currentUser, postNum));
+            forumRepository.forumPostList.add(new ForumPost(
+                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM - yyyy")),
+                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")),
+                    inputText,
+                    poster,
+                    postNum));
         }
 
         public void sortPosts(){
