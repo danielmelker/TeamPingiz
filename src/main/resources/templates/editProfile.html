@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="editStyle.css">
 </head>
 <body>
 
@@ -22,33 +23,70 @@
     <!-- Page Content  -->
     <div id="content" class="p-4 p-md-5 pt-5">
 
-        <div class="container text-center" style="width: 500px">
-            <h1 class="display-3">Edit profile</h1>
-            <h2 class="">Username: [[${session.currentUser}]]</h2>
-            <img th:src="${session.user.fileURL}" class="img img-fluid">
-            <p class="">Current description: [[${session.user.description}]]</p>
-            <p class="mt-1">Academy class: [[${session.user.academyClass}]]</p>
+        <div class="container w-75 text-center">
 
-
-            <form action="/editProfile" method="POST">
-                <div class="form-group">
-                    <label for="description">New description</label>
-                    <input th:field="${session.userDescription}" type="textarea"  name="description" id="description" class="" />
-                    <br>
-                    <label for="academyClass">Academy class</label>
-                    <input th:field="${session.academyClass}" type="textarea"  name="academyClass" id="academyClass" class="" />
-                    <br>
-                    <label for="imgFileURL">New profile picture url</label>
-                    <input type="text"  name="imgFileURL" id="imgFileURL" class="" />
-                    <br>
-                    <label for="description">New password</label>
-                    <input  type="password"  name="password" id="password" class="" />
-                    <br>
-                    <input class="btn btn-primary mt-3" type="submit"/>
+            <div class="row">
+                <div class="col-4">
+                    <img th:src="${session.user.fileURL}" class="img img-fluid">
                 </div>
-            </form>
+                <div class="col-6">
+                    <h2 class="m-2"> [[${session.currentUser}]]</h2>
+                    <p class=""> [[${session.user.description}]]</p>
+                    <p class="mt-1">Academy class: [[${session.user.academyClass}]]</p>
+
+                </div>
+            </div>
+
+<!--            <h2 class="">Username: [[${session.currentUser}]]</h2>-->
+<!--            <img th:src="${session.user.fileURL}" class="img img-fluid">-->
+<!--            <p class="">Current description: [[${session.user.description}]]</p>-->
+<!--            <p class="mt-1">Academy class: [[${session.user.academyClass}]]</p>-->
 
 
+            <div class="m-2">
+                <h1 class="mt-3">Edit profile</h1>
+                <form action="/editProfile" method="POST">
+                    <div class="form-group">
+                        <div class="row mt-3">
+                            <div class="col-3">
+                                <label for="description">New description</label>
+                            </div>
+                            <div class="col-9">
+                                <input th:field="${session.userDescription}" type="textarea" rows="3" name="description" id="description" class="form-control"/>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-3">
+                                <label for="academyClass">Academy class</label>
+                            </div>
+                            <div class="col-9">
+                                <input th:field="${session.academyClass}" type="textarea"  name="academyClass" id="academyClass" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-3">
+                                <label for="imgFileURL">New profile picture url</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text"  name="imgFileURL" id="imgFileURL" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-3">
+                                <label for="description">New password</label>
+                            </div>
+                            <div class="col-9">
+                                <input  type="password"  name="password" id="password" class="form-control" />
+                            </div>
+                        </div>
+                        <input class="btn btn-primary mt-3" type="submit"/>
+                    </div>
+                </form>
+
+            </div>
         </div>
 
     </div>
