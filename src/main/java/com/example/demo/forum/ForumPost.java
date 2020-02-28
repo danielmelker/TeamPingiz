@@ -11,17 +11,16 @@ public class ForumPost {
     public String datePosted;
     public String timePosted;
     public String thePost;
-    public static int postNum;
+    public int postNum;
     public String postedBy;
 
-    public ForumPost(String datePosted, String timePosted, String thePost, String poster){
+    public ForumPost(String datePosted, String timePosted, String thePost, String poster, int postNum){
 
         this.datePosted = datePosted;
         this.timePosted = timePosted;
         this.thePost = thePost;
-        this.postNum = postNum+1;
+        this.postNum = postNum;
         this.postedBy = poster;
-        System.out.println(this.postNum);
     }
 
     public int getPostNum() {

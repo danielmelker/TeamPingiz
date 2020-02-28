@@ -24,8 +24,14 @@
 
             <h2 class="mb-4">Forum</h2>
 
+            <form action="/forum" method="post" style="border-5">
 
+                <input type="text" class="form-control" id="title" name="inputText"  autofocus style="width: 27rem;"/>
+                <br>
+                <input type="submit" value="Post">
 
+            </form>
+<br>
 
     <div class="card mb-2 bg-success border-danger text-light" style="width: 30rem;" th:each="listan : ${session.postsAtt}">
         <div class="card-header">
@@ -44,15 +50,8 @@
         </div>
     </div>
 
-            <br>
 
-            <form action="/forum" method="post" style="border-5">
 
-                <input type="text" class="form-control" id="title" name="inputText"  autofocus style="width: 27rem;"/>
-<br>
-                <input type="submit" value="Post">
-
-            </form>
 
 
 
