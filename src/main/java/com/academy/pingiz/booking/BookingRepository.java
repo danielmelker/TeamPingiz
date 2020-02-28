@@ -3,6 +3,7 @@ package com.academy.pingiz.booking;
 import com.academy.pingiz.user.User;
 import org.springframework.stereotype.Repository;
 
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -11,58 +12,51 @@ import java.util.List;
 @Repository
 public class BookingRepository {
 
-    private List<BookingSlot> bookingSlotList = new ArrayList<>();
-    //Calendar calendar = Calendar.getInstance();
+    private int startTime = 7;
+    private int endTime = 19;
+    private LocalDate date = LocalDate.now();
 
-    public BookingRepository(){
-        createSlots();
-    }
+    private List<BookingDay> allDays = new ArrayList<>();
 
-    public void createSlots(){
-        int startTime = 7;
-        int endTime = 19;
-        LocalTime slotStart;
-        LocalTime slotEnd;
-        LocalDate date;
-
-        for(int j = 0; j < 3; j++) {
-            date = LocalDate.now().plusDays(j);
-
-            for (int i = startTime; i < endTime; i++) {
-                slotStart = LocalTime.of(startTime, 0);
-                slotEnd = LocalTime.of(startTime + 1, 0);
-
-                BookingSlot slot = new BookingSlot(slotStart, slotEnd, startTime, date);
-
-                bookingSlotList.add(slot);
-
-                startTime++;
-            }
+    public BookingRepository (){
+        for(int i = 0; i < 3; i++){
+            BookingDay bookingDay = new BookingDay(startTime, endTime, date.plusDays(i), i);
+            allDays.add(bookingDay);
         }
-    }
-
-    public List<BookingSlot> getBookingSlotList() {
-        return bookingSlotList;
-    }
-
-    public void setBookingSlotList(List<BookingSlot> bookingSlotList) {
-        this.bookingSlotList = bookingSlotList;
     }
 
     public List<BookingSlot> getSlotsBookedBy(User user){
         List<BookingSlot> slots = new ArrayList<>();
-        for(BookingSlot slot: bookingSlotList){
-            if(slot.getBookedBy()!= null && user.getUsername().equals(slot.getBookedBy().getUsername())){
-                slots.add(slot);
+        for(BookingDay day: allDays){
+            for(BookingSlot slot: day.getBookingSlotList()) {
+                if (slot.getBookedBy() != null && user.getUsername().equals(slot.getBookedBy().getUsername())) {
+                    slots.add(slot);
+                }
             }
         }
         return slots;
     }
 
+    public List<BookingDay> getAllDays() {
+        return allDays;
+    }
+
+    public List<BookingSlot> getAllSlots(){
+        List<BookingSlot> allSlots = new ArrayList<>();
+        for(BookingDay day : allDays){
+            for(BookingSlot slot : day.getBookingSlotList()){
+                allSlots.add(slot);
+            }
+        }
+        return allSlots;
+    }
 
     public BookingSlot getSlotById(int id){
-        return bookingSlotList.stream().filter(t -> t.getSlotID()==id).findFirst().get();
+        return getAllSlots().stream().filter(t -> t.getSlotID()==id).findFirst().get();
 
     }
 
+    public void setAllDays(List<BookingDay> allDays) {
+        this.allDays = allDays;
+    }
 }

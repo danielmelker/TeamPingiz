@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 
@@ -21,9 +22,13 @@ public class BookingController {
     UserService userService;
 
     @GetMapping("/booking")
-    String getBooking(Model model, HttpSession session){
-        model.addAttribute("bookingList", bookingService.getBookingRep().getBookingSlotList());
-        if(session.getAttribute("validated") ==null){
+    String getBooking(Model model, HttpSession session, @RequestParam(required = false, defaultValue = "0") int bookingPage){
+        model.addAttribute("bookingDay", bookingService.getBookingRep().getAllDays().get(bookingPage));
+        model.addAttribute("allDays", bookingService.getBookingRep().getAllDays());
+        model.addAttribute("currentPage", bookingPage);
+        model.addAttribute("currentDate", bookingService.getBookingRep().getAllDays().get(bookingPage).getDate());
+        model.addAttribute("numOfDays", bookingService.numberOfBookingDays());
+        if(session.getAttribute("validated") == null){
             session.setAttribute("validated",false);
         }
 //        if(session.getAttribute("validated") != null && (boolean)session.getAttribute("validated")){

@@ -11,15 +11,17 @@ public class BookingSlot {
     private LocalTime endTime;
     private LocalDate date;
     private int slotID;
+    private static int lastID = 0;
 
     private User bookedBy = null;
 
-    public BookingSlot (LocalTime startTime, LocalTime endTime, int slotID, LocalDate date){
+    public BookingSlot (LocalTime startTime, LocalTime endTime, LocalDate date){
         this.startTime = startTime;
         this.endTime = endTime;
-        this.slotID = slotID;
+        this.slotID = lastID;
         this.date = date;
         isAvailable = true;
+        lastID++;
     }
 
     public boolean getIsAvailable() {
