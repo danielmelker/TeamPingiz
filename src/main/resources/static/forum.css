@@ -15,3 +15,22 @@
 .form {
 border-radius: 25px;
 }
+
+h1{
+    color: #CC0E00;
+    font-family: 'Pridi', Arial;
+    font-size:5vw;
+}
+
+h4 {
+    color: white;
+    font-family: 'Pridi', Arial;
+}
+
+.btn {
+    margin-bottom: 20px;
+    background-color: #CC0E00;
+    font-family: 'Pridi', Arial;
+    font-size: 1.5vw;
+    color: white;
+}
