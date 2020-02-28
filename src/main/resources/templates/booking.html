@@ -30,7 +30,7 @@
             <p>Click the time you want to book. Time slots in grey are unavailable.<br>You can only book one hour at the time.<br>You must cancel your booking the latest an hour before.</p>
         </div>
 
-        <div class="container">
+        <div class="container w-75">
             <div class="row">
                 <div class="modalID  col-md-auto" th:each="slot : ${bookingList}">
                     <div th:if="${slot.isAvailable}">
@@ -88,10 +88,6 @@
                         </div>
                     </div>
 
-                    <div th:if="${!slot.isAvailable}">
-                        <button type="button" class="btn btn-secondary" th:text="${slot.startTime}" aria-disabled="true">
-                        </button>
-                    </div>
                 <div th:if="${!slot.isAvailable}">
                     <button type="button" class="btn btn-secondary" th:text="${slot.startTime}" disabled>
                     </button>

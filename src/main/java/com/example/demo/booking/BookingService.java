@@ -4,17 +4,19 @@ import com.example.demo.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BookingService {
 
     @Autowired
-    private BookingRep bookingRep;
+    private BookingRepository bookingRep;
 
-    public BookingRep getBookingRep() {
+    public BookingRepository getBookingRep() {
         return bookingRep;
     }
 
-    public void setBookingRep(BookingRep bookingRep) {
+    public void setBookingRep(BookingRepository bookingRep) {
         this.bookingRep = bookingRep;
     }
 
@@ -25,5 +27,9 @@ public class BookingService {
                 slot.setBookedBy(booker);
             }
         }
+    }
+
+    public List<BookingSlot> getSlotsBookedBy(User user){
+        return bookingRep.getSlotsBookedBy(user);
     }
 }

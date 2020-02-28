@@ -51,16 +51,44 @@
         </nav>
 
         <!-- Page Content  -->
-        <div id="content" class="p-4 p-md-5 pt-5">
+        <div id="content" class="p-4 p-md-5 pt-5 w-75 text-center">
             <h2 class="mb-4">Welcome [[${session.currentUser}]]! </h2>
             <p>How goes the Pingiz today? </p>
 
-            <h3>
-                Your booked times are:
-            </h3>
-            <ol>
-                <li>....... to be fixed</li>
-            </ol>
+
+            <div th:if="${bookedSlots.size() > 0 }">
+
+                <h3>
+                    Your booked times are:
+                </h3>
+
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col">Time slot</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="slot : ${bookedSlots}">
+                        <th scope="row">[[${slot.date}]]</th>
+                        <td> [[${slot.startTime}]]-[[${slot.endTime}]]</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div th:if="${bookedSlots.size()== 0 }">
+
+                <h3>
+                    You have no booked time slots.
+                </h3>
+                <p><a href="/booking">Book here</a></p>
+
+            </div>
         </div>
     </div>
 
