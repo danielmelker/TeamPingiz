@@ -52,6 +52,12 @@ public class BookingSlot {
     }
 
     public void setBookedBy(User bookedBy) {
+        this.isAvailable=false;
         this.bookedBy = bookedBy;
     }
+    public void unbook(){
+        this.isAvailable=true;
+        this.bookedBy=null;
+    }
+
 }
