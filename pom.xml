@@ -8,11 +8,11 @@
 		<version>2.2.4.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>demo</artifactId>
+	<groupId>com.academy</groupId>
+	<artifactId>pingiz</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>TeamPingiz</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Pingiz website project</description>
 
 	<properties>
 		<java.version>13</java.version>
@@ -68,9 +68,26 @@
 
 	<build>
 		<plugins>
+			<plugin>                                                                                                    <groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>                                                       <version>3.1</version>                                                                             <configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<executable>true</executable>
+				</configuration>
+				<executions>                                                                                            <execution>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+
 			</plugin>
 		</plugins>
 	</build>
