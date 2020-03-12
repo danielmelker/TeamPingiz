@@ -53,7 +53,6 @@ public class BookingRepository {
 
     public BookingSlot getSlotById(int id){
         return getAllSlots().stream().filter(t -> t.getSlotID()==id).findFirst().get();
-
     }
 
     public void setAllDays(List<BookingDay> allDays) {

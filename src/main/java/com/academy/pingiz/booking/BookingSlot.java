@@ -10,7 +10,7 @@ public class BookingSlot {
     private LocalTime startTime;
     private LocalTime endTime;
     private LocalDate date;
-    private int slotID;
+    private Integer slotID;
     private static int lastID = 0;
 
     private User bookedBy = null;
