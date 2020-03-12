@@ -12,8 +12,6 @@ import java.util.List;
 @Service
 public class ForumService {
 
-    public int postNum=0;
-
     @Autowired
     private ForumRepositorySql forumRepositorySql;
 
@@ -21,12 +19,19 @@ public class ForumService {
         return (List)forumRepositorySql.findAllByOrderByTimePostedDesc();
     }
 
-        public void addPost(String inputText, User poster){
-            postNum++;
-            forumRepositorySql.save(new ForumPost(LocalDate.now(),
-                    LocalTime.now(),
-                    inputText,
-                    poster,
-                    postNum));
+        public void addPost(String inputText, User poster) {
+            if (!inputText.isEmpty()) {
+                forumRepositorySql.save(new ForumPost(LocalDate.now(),
+                        LocalTime.now(),
+                        inputText,
+                        poster));
+            }
         }
+        public void deletePost(long postNum){
+            forumRepositorySql.deleteById(postNum);
+        }
+
+    public ForumPost getPostById(long id) {
+        return forumRepositorySql.findById(id).get();
+    }
 }

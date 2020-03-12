@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -23,7 +24,25 @@ public class ForumController {
             session.setAttribute("postsAtt", forumService.getForumPostList());
 
             return "forum";
+    }
 
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable long id, HttpSession session) {
+        if (session.getAttribute("validated") != null && (boolean) session.getAttribute("validated")) {
+
+            ForumPost post = forumService.getPostById(id);
+            User poster=post.getPoster();
+
+            User loggedIn = (User) session.getAttribute("user");
+
+            if (poster.getUsername().equals(loggedIn.getUsername())) {
+
+                forumService.deletePost(id);
+
+            }
+        }
+
+        return "redirect:/forum";
     }
 
     @PostMapping("/forum")
