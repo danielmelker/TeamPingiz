@@ -40,7 +40,7 @@
             </form>
 <br>
 
-    <div class="card mb-2 bg-success border-danger text-light" style="width: 30rem;" th:each="listan : ${session.postsAtt}">
+    <div class="card mb-2 border-danger text-light" style="width: 30rem;" th:each="listan : ${session.postsAtt}">
         <div class="card-header">
 
             <div class="row">
@@ -66,7 +66,7 @@
 
         </div>
 
-        <span align="right"><a th:href="'/delete' + '/' + ${listan.postNum} " ><button>Delete
+        <span align="right"><a th:href="'/delete' + '/' + ${listan.postNum} " ><button class="btn-delete";>Delete
         </button></a></span>
 
 

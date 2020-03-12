@@ -4,6 +4,11 @@ margin: 40px auto;
 text-align: center;
 }
 
+.card {
+    background-color: #CC0E00;
+    font-family: 'Pridi', Arial;
+}
+
 .card-header {
     background-color: #CC0E00;
     font-family: 'Pridi', Arial;
@@ -36,9 +41,17 @@ h4 {
 }
 
 .btn {
-    margin-bottom: 20px;
-    background-color: #CC0E00;
-    font-family: 'Pridi', Arial;
-    font-size: 1.5vw;
-    color: white;
-}
+     margin-bottom: 20px;
+     background-color: #CC0E00;
+     font-family: 'Pridi', Arial;
+     font-size: 1.5vw;
+     color: white;
+ }
+
+ .btn-delete {
+     margin-bottom: 0px;
+     background-color: #CC0E00;
+     font-family: 'Pridi', Arial;
+     font-size: 1.5vw;
+     color: white;
+ }
