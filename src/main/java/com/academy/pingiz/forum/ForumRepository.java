@@ -16,8 +16,8 @@ public class ForumRepository {
         return forumPostList;
     }
 
-    public List<ForumPost> splitIntoPages(int to){
+    /*public List<ForumPost> splitIntoPages(int to){
 
             return forumPostList.subList(0,to);
-    }
+    }*/
 }

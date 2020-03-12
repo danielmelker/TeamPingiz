@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 @Service
 public class ForumService {
@@ -18,6 +19,13 @@ public class ForumService {
     @Autowired
     private ForumRepository forumRepository;
 
+    @Autowired
+    private ForumRepositorySql forumRepositorySql;
+
+    public List<ForumPost> getForumPostList(){
+
+        return forumRepository.forumPostList;
+    }
 
 
         public void addPost(String inputText, User poster){

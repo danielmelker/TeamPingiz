@@ -15,9 +15,6 @@ import javax.servlet.http.HttpSession;
 public class ForumController {
 
     @Autowired
-    private ForumRepository forumRepository;
-
-    @Autowired
     private ForumService forumService;
 
 
@@ -26,10 +23,10 @@ public class ForumController {
     public String showForum(HttpSession session, @RequestParam(required = false, defaultValue = "0") Integer page, Model model){
 
         if (session.getAttribute("validated") != null && (boolean) session.getAttribute("validated")) {
-            session.setAttribute("postsAtt", forumRepository.getForumPostList());
-            model.addAttribute("page",page);
+            session.setAttribute("postsAtt", forumService.getForumPostList());
+         /*   model.addAttribute("page",page);
             model.addAttribute("currentPage",page);
-            model.addAttribute("show",forumRepository.splitIntoPages(page));
+            model.addAttribute("show",forumRepository.splitIntoPages(page));*/
             return "forum";
         } else {
             return "landingPage";
@@ -39,10 +36,10 @@ public class ForumController {
     @GetMapping("/forum/{page}")
     public String showForum1(HttpSession session, @RequestParam(required = false, defaultValue = "1") Integer page, Model model){
         if (session.getAttribute("validated") != null && (boolean) session.getAttribute("validated")) {
-            session.setAttribute("postsAtt", forumRepository.getForumPostList());
-            model.addAttribute("page",page);
+            session.setAttribute("postsAtt", forumService.getForumPostList());
+      /*      model.addAttribute("page",page);
             model.addAttribute("currentPage",page);
-            model.addAttribute("show",forumRepository.splitIntoPages(2));
+            model.addAttribute("show",forumRepository.splitIntoPages(2));*/
             return "forum";
         } else {
             return "landingPage";
@@ -58,7 +55,7 @@ public class ForumController {
     @PostMapping("/forum")
     public String postToForum(Model model,@RequestParam(required = false, defaultValue = "") String inputText, HttpSession session,@RequestParam(required = false, defaultValue = "1") Integer page){
 
-        //String currentUser = (String)session.getAttribute("currentUser");
+
         if (session.getAttribute("validated") != null && (boolean) session.getAttribute("validated")) {
 
             User poster =(User) session.getAttribute("user");
@@ -66,18 +63,11 @@ public class ForumController {
             forumService.addPost(inputText, poster);
             forumService.sortPosts();
 
-       /* forumRepository.forumPostList.add(new ForumPost(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM - yyyy")),
-                LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")),inputText,
-                currentUser));*/
-
-     /*   forumRepository.forumPostList.sort(Comparator.comparingInt(ForumPost::getPostNum));
-        Collections.reverse(forumRepository.forumPostList);*/
-
-            session.setAttribute("postsAtt", forumRepository.getForumPostList());
+            session.setAttribute("postsAtt", forumService.getForumPostList());
 
 
-            model.addAttribute("page", page);
-            model.addAttribute("currentPage", page);
+         /*   model.addAttribute("page", page);
+            model.addAttribute("currentPage", page);*/
 
             return "forum";
         }else {
