@@ -1,25 +1,36 @@
 package com.academy.pingiz.forum;
 
 import com.academy.pingiz.user.User;
-import org.springframework.stereotype.Service;
 
-@Service
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+
+@Entity
 public class ForumPost {
 
-    private String datePosted;
-    private String timePosted;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long postNum;
+    @Column(name = "DATE_POSTED")
+    private LocalDate datePosted;
+    @Column(name = "TIME_POSTED")
+    private LocalTime timePosted;
+    @Column(name = "THE_POST")
     private String thePost;
-    private int postNum;
+    @Column(name = "POSTED_BY")
     private String postedBy;
 
+    @ManyToOne
     private User poster;
 
 
-    public String getDatePosted() {
+    public LocalDate getDatePosted() {
         return datePosted;
     }
 
-    public String getTimePosted() {
+    public LocalTime getTimePosted() {
         return timePosted;
     }
 
@@ -31,7 +42,7 @@ public class ForumPost {
         return postedBy;
     }
 
-    public ForumPost(String datePosted, String timePosted, String thePost, User poster, int postNum){
+    public ForumPost(LocalDate datePosted, LocalTime timePosted, String thePost, User poster, int postNum){
 
         this.datePosted = datePosted;
         this.timePosted = timePosted;
@@ -41,13 +52,13 @@ public class ForumPost {
         this.poster = poster;
     }
 
-    public int getPostNum() {
+    public long getPostNum() {
         return postNum;
     }
 
     public User getPoster(){ return poster; }
 
-    public void setPostNum(int postNum) {
+    public void setPostNum(long postNum) {
         this.postNum = postNum;
     }
 
