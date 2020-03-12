@@ -46,12 +46,12 @@
             <div class="row">
                 <div class="modalID  col-md-auto" th:each="slot : ${bookingDay.get(currentPageDate)}">
                     <div th:if="${slot.isAvailable}">
-                        <button type="button" class="btn" data-toggle="modal" th:attr="data-target='#a' + ${slot.slotID}" th:text="${slot.startTime}">
+                        <button type="button" class="btn" data-toggle="modal" th:attr="data-target='#a' + ${slot.id}" th:text="${slot.startTime}">
                         </button>
 
                         <!-- Modal -->
                         <div th:if="${session.validated}">
-                            <div class="modal fade" th:id="'a' + ${slot.slotID}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" th:id="'a' + ${slot.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -65,7 +65,7 @@
                                             <span class="modal-text">Book the Pingiz table with equipment</span>
                                         </div>
                                         <div class="modal-footer">
-                                            <form th:action="'/booking/' + ${slot.slotID}" method="post">
+                                            <form th:action="'/booking/' + ${slot.id}" method="post">
                                                 <input class="btn" type="submit" value="Book"/>
                                             </form>
                                         </div>
@@ -77,7 +77,7 @@
 
 
                         <div th:if="${!session.validated}">
-                            <div class="modal fade" th:id="'a' + ${slot.slotID}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" th:id="'a' + ${slot.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">

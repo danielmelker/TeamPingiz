@@ -11,12 +11,11 @@ public class BookingSlot {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer slotID;
+    private Integer id;
     private boolean isAvailable;
     private LocalTime startTime;
     private LocalTime endTime;
     private LocalDate date;
-//    private static int lastID = 0;
 
     @ManyToOne
     private User bookedBy = null;
@@ -24,11 +23,11 @@ public class BookingSlot {
     public BookingSlot (LocalTime startTime, LocalTime endTime, LocalDate date){
         this.startTime = startTime;
         this.endTime = endTime;
-//        this.slotID = lastID;
         this.date = date;
         isAvailable = true;
-//        lastID++;
     }
+
+    public BookingSlot(){}
 
     public boolean getIsAvailable() {
         return isAvailable;
@@ -42,8 +41,12 @@ public class BookingSlot {
         isAvailable = available;
     }
 
-    public int getSlotID() {
-        return slotID;
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer slotID) {
+        this.id = slotID;
     }
 
     public LocalTime getStartTime() {

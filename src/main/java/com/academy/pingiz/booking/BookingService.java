@@ -16,16 +16,16 @@ public class BookingService {
 
     private int startTime = 7;
     private int endTime = 19;
-    private LocalDate date = LocalDate.now();
 
     public void createSlots(LocalDate date){
             for (int i = startTime; i < endTime; i++) {
                 LocalTime slotStart = LocalTime.of(startTime, 0);
                 LocalTime slotEnd = LocalTime.of(startTime + 1, 0);
-
-                repJpa.save(new BookingSlot(slotStart, slotEnd, date));
+                var slot = new BookingSlot(slotStart, slotEnd, date);
+                repJpa.save(slot);
 
                 startTime++;
+                System.out.println(date);
             }
     }
 
