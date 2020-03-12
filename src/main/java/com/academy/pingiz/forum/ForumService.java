@@ -12,8 +12,6 @@ import java.util.List;
 @Service
 public class ForumService {
 
-    public int postNum=0;
-
     @Autowired
     private ForumRepositorySql forumRepositorySql;
 
@@ -22,12 +20,10 @@ public class ForumService {
     }
 
         public void addPost(String inputText, User poster){
-            postNum++;
-            forumRepositorySql.save(new ForumPost(LocalDate.now(),
+             forumRepositorySql.save(new ForumPost(LocalDate.now(),
                     LocalTime.now(),
                     inputText,
-                    poster,
-                    postNum));
+                    poster));
         }
 
         public void deletePost(long postNum){

@@ -29,7 +29,7 @@ public class BookingController {
             currentPageDate = LocalDate.now();
         }
 
-        if()
+
 
         System.out.println(bookingService.getGroupedByDay().get(currentPageDate).size());
 

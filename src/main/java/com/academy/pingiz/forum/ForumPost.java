@@ -42,12 +42,12 @@ public class ForumPost {
         return postedBy;
     }
 
-    public ForumPost(LocalDate datePosted, LocalTime timePosted, String thePost, User poster, int postNum){
+    public ForumPost(LocalDate datePosted, LocalTime timePosted, String thePost, User poster){
 
         this.datePosted = datePosted;
         this.timePosted = timePosted;
         this.thePost = thePost;
-        this.postNum = postNum;
+
         this.postedBy = poster.getUsername();
         this.poster = poster;
     }
