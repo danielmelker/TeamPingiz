@@ -55,7 +55,7 @@ public class UserController {
 
 
         if(session.getAttribute("validated") != null && (boolean)session.getAttribute("validated")){
-            User u = userService.getUser((String)session.getAttribute("currentUser"));
+            User u = userService.getUser((String)session.getAttribute("currentUser")).get();
 
 
             session.setAttribute("userImg", u.getFileURL());
@@ -77,7 +77,7 @@ public class UserController {
         }
 
         if((boolean)session.getAttribute("validated")){
-            User u = userService.getUser((String)session.getAttribute("currentUser"));
+            User u = userService.getUser((String)session.getAttribute("currentUser")).get();
 
             session.setAttribute("user", u);
 
@@ -112,7 +112,7 @@ public class UserController {
 
         if(response.isValid()){
             session.setAttribute("currentUser", username );
-            var u = userService.getUser(username);
+            var u = userService.getUser(username).get();
             session.setAttribute("user", u);
             session.setAttribute("validated", true);
             return "redirect:/";
@@ -132,9 +132,9 @@ public class UserController {
 
 
     @PostMapping("/register")
-    public String register(HttpSession session, @RequestParam(name="username") String username,
-                        @RequestParam(name="password") String password){
-
+    public String register(HttpSession session,
+                           @RequestParam(name="username") String username,
+                            @RequestParam(name="password") String password){
         boolean userCreated = userService.register(User.of(username,password));
 
         if(userCreated){

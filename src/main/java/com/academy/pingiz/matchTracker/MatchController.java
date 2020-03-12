@@ -44,8 +44,8 @@ public class MatchController {
 
         if(session.getAttribute("validated")!= null && (boolean)session.getAttribute("validated")){
 
-            User p1 = userService.getUser(player1);
-            User p2 = userService.getUser(player2);
+            User p1 = userService.getUser(player1).get();
+            User p2 = userService.getUser(player2).get();
 
             Match.Single s = new Match.Single(p1, p2);
             for(int i=0;i<player1points;i++){
@@ -71,8 +71,8 @@ public class MatchController {
 
     private void setupTestMatches(){
 
-        User jacob = userService.getUser("Jacob");
-        User elvira = userService.getUser("Elvira");
+        User jacob = userService.getUser("Jacob").get();
+        User elvira = userService.getUser("Elvira").get();
 
 
 
