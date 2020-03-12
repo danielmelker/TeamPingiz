@@ -1,38 +1,11 @@
 package com.academy.pingiz.user;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
-import java.util.*;
+import java.util.Optional;
 
-@Repository
-public class UserRepository {
+public interface UserRepository extends CrudRepository<User, Long> {
 
-    private Map<String, User> users;
-
-    public UserRepository(){
-        users = new HashMap<>();
-    }
-
-    public boolean save(User user){
-
-        if(users.containsKey(user.getUsername())){
-            return false; //username is taken.
-        } else {
-            users.put(user.getUsername(), user);
-            return true;
-        }
-    }
-
-    public Set<User> findAll(){
-        return new HashSet<User>(users.values());
-    }
-
-    public User findByUsername(String username){
-        if(users.containsKey(username)){
-            return users.get(username);
-        } else {
-            return null;
-        }
-    }
+    Optional<User> findByUsername(String username);
 
 }

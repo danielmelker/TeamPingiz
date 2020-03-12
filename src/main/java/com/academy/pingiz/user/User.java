@@ -9,7 +9,6 @@ import javax.persistence.*;
 public class User{
     private static final long serialVersion = 1L;
 
-//    private static long lastId=1;
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -39,9 +38,6 @@ public class User{
         this.academyClass = "not specified";
 
         this.fileURL="https://upload.wikimedia.org/wikipedia/commons/4/4e/Shakehand1.jpg";
-
-//        this.id = lastId;
-//        lastId++;
 
     }
 
