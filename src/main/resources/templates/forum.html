@@ -39,7 +39,7 @@
 
             </form>
 <br>
-            <span th:text="${notAllowedToDelete}"></span>
+
     <div class="card mb-2 bg-success border-danger text-light" style="width: 30rem;" th:each="listan : ${session.postsAtt}">
         <div class="card-header">
 
@@ -66,8 +66,8 @@
 
         </div>
 
-        <th><a th:href="'/delete' + '/' + ${listan.postNum} " >Delete
-        </a></th>
+        <span align="right"><a th:href="'/delete' + '/' + ${listan.postNum} " ><button>Delete
+        </button></a></span>
 
 
 
