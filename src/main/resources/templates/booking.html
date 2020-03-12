@@ -31,6 +31,7 @@
                 <p>Click the time you want to book. Time slots in grey are unavailable.<br>You can only book one hour at the time.<br>You must cancel your booking the latest an hour before.</p>
             </div>
             <span th:each="day : ${allDays}">
+
                 <span th:if="${day.date} != ${currentDate}">
                 <a class="btn switchday" th:text="${day.date}" th:href="'/booking?bookingPage=' + ${day.dayID}"></a>
                 </span>

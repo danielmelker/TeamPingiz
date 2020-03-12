@@ -4,8 +4,11 @@ import com.academy.pingiz.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookingService {
@@ -13,42 +16,45 @@ public class BookingService {
     @Autowired
     private BookingRepositoryJPA repJpa;
 
-//    public BookingRepository getBookingRep() {
-//        return bookingRep;
-//    }
-//
-//    public void setBookingRep(BookingRepository bookingRep) {
-//        this.bookingRep = bookingRep;
-//    }
+    private int startTime = 7;
+    private int endTime = 19;
+    private LocalDate date = LocalDate.now();
 
-    public List<Integer> numberOfBookingDays(){
-        List<Integer> numOfDays = new ArrayList<>();
-        for(Integer i = 1; i < repJpa.getAllDays().size(); i++){
-            numOfDays.add(i);
+    public void createSlots(int startTime, int endTime, LocalDate date){
+        for (int t = 0; t < 3; t++) {
+            for (int i = startTime; i < endTime; i++) {
+                LocalTime slotStart = LocalTime.of(startTime, 0);
+                LocalTime slotEnd = LocalTime.of(startTime + 1, 0);
+
+                repJpa.save(new BookingSlot(slotStart, slotEnd, date));
+
+                startTime++;
+            }
+            date.plusDays(1);
         }
-        return numOfDays;
     }
 
     public void setToBooked(int slotID, User booker) {
-        for(BookingDay day : bookingRep.getAllDays()) {
-            for (BookingSlot slot : day.getBookingSlotList()) {
-                if (slot.getSlotID() == slotID) {
-                    slot.setAvailable(false);
-                    slot.setBookedBy(booker);
-                }
-            }
-        }
-    }
 
-    public List<BookingSlot> getSlotsBookedBy(User user){
-        return bookingRep.getSlotsBookedBy(user);
+        Optional<BookingSlot> slot = repJpa.findById(slotID);
+
+        if (slot.isEmpty() ||! slot.get().getIsAvailable()) {
+            return;
+        }
+
+        slot.get().setAvailable(false);
+        slot.get().setBookedBy(booker);
+
     }
 
     public void cancelBooking(int id){
-        BookingSlot slot = bookingRep.getSlotById(id);
-        if(!slot.getIsAvailable()){
-            slot.unbook();
-        }
-    }
+        Optional<BookingSlot> slot = repJpa.findById(id);
 
+        if (slot.isEmpty()) {
+            return;
+        }
+
+        slot.get().setAvailable(true);
+        slot.get().setBookedBy(null);
+    }
 }
