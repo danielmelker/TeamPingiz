@@ -1,5 +1,6 @@
 package com.academy.pingiz.user;
 
+import com.academy.pingiz.booking.BookingSlot;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -21,6 +22,13 @@ public class User{
     private String description;
     private String academyClass;
     private String fileURL;
+
+    @OneToMany(mappedBy = "bookedBy")
+    private Iterable<BookingSlot> bookings;
+
+    public Iterable<BookingSlot> getBookings() {
+        return bookings;
+    }
 
     public String getAcademyClass() {
         return academyClass;
