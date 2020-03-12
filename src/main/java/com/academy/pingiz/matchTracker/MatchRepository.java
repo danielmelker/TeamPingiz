@@ -26,7 +26,7 @@ public class MatchRepository {
                 .collect(Collectors.toSet());
     }
 
-    public void add(Match m){
+    public void save(Match m){
         matches.put(m.getId(), m);
     }
 
@@ -34,7 +34,7 @@ public class MatchRepository {
         return matches.get(id);
     }
 
-    public List<Match> getAllMatches(){
+    public List<Match> findAll(){
         var mlist = matches.values().stream().collect(Collectors.toList());
         mlist.sort((m1,m2) -> m1.getTime().compareTo(m2.getTime()));
         return mlist;

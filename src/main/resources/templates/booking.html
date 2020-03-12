@@ -44,9 +44,7 @@
 
 
             <div class="row">
-
                 <div class="modalID  col-md-auto" th:each="slot : ${bookingDay.bookingSlotList}">
-
                     <div th:if="${slot.isAvailable}">
                         <button type="button" class="btn" data-toggle="modal" th:attr="data-target='#a' + ${slot.slotID}" th:text="${slot.startTime}">
                         </button>
