@@ -33,20 +33,15 @@ public class BookingController {
             currentPageDate = LocalDate.now();
         }
 
-        LocalDate today = LocalDate.now();
-
         if(bookingService.getGroupedByDay().get(LocalDate.now()).isEmpty()){
             bookingService.createSlots(LocalDate.now());
-            bookingService.createSlots(today.plusDays(1));
-            bookingService.createSlots(today.plusDays(2));
+            bookingService.createSlots(LocalDate.now().plusDays(1));
+            bookingService.createSlots(LocalDate.now().plusDays(2));
         }
 
         if(bookingService.getGroupedByDay().get(LocalDate.now().plusDays(2)).isEmpty()){
             bookingService.createSlots(LocalDate.now().plusDays(2));
         }
-
-        System.out.println(bookingService.getGroupedByDay().get(currentPageDate).size());
-        System.out.println(today.plusDays(2));
 
         model.addAttribute("bookingDay", bookingService.getGroupedByDay());
         var days = bookingService.getGroupedByDay().keySet().toArray();

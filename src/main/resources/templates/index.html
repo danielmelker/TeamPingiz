@@ -78,7 +78,7 @@
             <br><br>
 
             <div class="m-3 pt-2">
-                <div th:if="${bookedSlots.size() > 0 }">
+                <div th:if="${bookings.size() > 0 }">
 
                     <h3>
                         Your booked times are:
@@ -94,11 +94,11 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="slot : ${bookedSlots}">
+                        <tr th:each="slot : ${bookings}">
                             <th scope="row">[[${slot.date}]]</th>
                             <td> [[${slot.startTime}]]-[[${slot.endTime}]]</td>
                             <td>
-                                <a class="btn" th:href="${'/booking/cancel/'+ slot.slotID}">Cancel</a>
+                                <a class="btn" th:href="${'/booking/cancel/'+ slot.id}">Cancel</a>
                             </td>
 
                         </tr>
@@ -108,7 +108,7 @@
                     <a class="btn" href="/booking">Book here</a>
                 </div>
 
-                <div th:if="${bookedSlots.size()== 0 }">
+                <div th:if="${bookings.size()== 0 }">
 
                     <h3>
                         You have no booked time slots.

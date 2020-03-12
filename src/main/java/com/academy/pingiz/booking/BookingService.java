@@ -64,10 +64,9 @@ public class BookingService {
         if (slot.isEmpty()) {
             return;
         }
+        var changedSlot=slot.get();
+        changedSlot.unbook();
 
-        slot.get().setAvailable(true);
-        slot.get().setBookedBy(null);
-
-        repJpa.save(slot.get());
+        repJpa.save(changedSlot);
     }
 }
