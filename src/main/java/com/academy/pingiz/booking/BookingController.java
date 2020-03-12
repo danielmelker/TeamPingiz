@@ -42,7 +42,7 @@ public class BookingController {
 
         if(session.getAttribute("validated") != null && (boolean)session.getAttribute("validated")){
             String username = (String)session.getAttribute("currentUser");
-            User user = userService.getUser(username);
+            User user = userService.getUser(username).get();
             bookingService.setToBooked(slotID,user);
         }
     return "redirect:/booking";
