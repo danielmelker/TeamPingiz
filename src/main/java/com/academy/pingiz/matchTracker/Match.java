@@ -2,6 +2,7 @@ package com.academy.pingiz.matchTracker;
 
 import com.academy.pingiz.user.User;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -9,32 +10,76 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+@Entity
 public class Match {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @ManyToMany
     private List<User> team1;
+    @ManyToMany
     private List<User> team2;
 
+    @ManyToMany
     private List<User> winners;
+
     private MatchType type;
 
     private LocalDateTime time;
 
+    @OneToMany(mappedBy = "match")
     private List<SetResult> setResults;
     private int numSets;
     private int team1score;
     private int team2score;
 
-    private long id;
-    private static long lastId = 1;
 
+    public void setNumSets(int numSets) {
+        this.numSets = numSets;
+    }
+
+    public void setTeam1score(int team1score) {
+        this.team1score = team1score;
+    }
+
+    public void setTeam2score(int team2score) {
+        this.team2score = team2score;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setTeam1(List<User> team1) {
+        this.team1 = team1;
+    }
+
+    public void setTeam2(List<User> team2) {
+        this.team2 = team2;
+    }
+
+    public void setWinners(List<User> winners) {
+        this.winners = winners;
+    }
+
+    public void setType(MatchType type) {
+        this.type = type;
+    }
+
+    public void setTime(LocalDateTime time) {
+        this.time = time;
+    }
+
+    public void setSetResults(List<SetResult> setResults) {
+        this.setResults = setResults;
+    }
 
     private Match(){
-        id=lastId;
-        lastId++;
     }
 
     private Match(User u1, User u2, List<SetResult> results, LocalDateTime time ){
-        this();
         type=MatchType.SINGLE;
         team1 = List.of(u1);
         team2 = List.of(u2);
