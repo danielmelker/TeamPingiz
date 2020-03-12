@@ -8,3 +8,7 @@ h4 {
     color: white;
     font-family: 'Pridi', Arial;
 }
+
+.winner {
+    font-weight: bold;
+}

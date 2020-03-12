@@ -24,7 +24,7 @@ public class User{
     private String academyClass;
     private String fileURL;
 
-    @OneToMany(mappedBy = "bookedBy")
+    @OneToMany(mappedBy = "bookedBy", fetch=FetchType.EAGER)
     private List<BookingSlot> bookings;
 
     public List<BookingSlot> getBookings() {
