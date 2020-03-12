@@ -6,9 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class BookingService {
@@ -20,8 +18,7 @@ public class BookingService {
     private int endTime = 19;
     private LocalDate date = LocalDate.now();
 
-    public void createSlots(int startTime, int endTime, LocalDate date){
-        for (int t = 0; t < 3; t++) {
+    public void createSlots(LocalDate date){
             for (int i = startTime; i < endTime; i++) {
                 LocalTime slotStart = LocalTime.of(startTime, 0);
                 LocalTime slotEnd = LocalTime.of(startTime + 1, 0);
@@ -30,8 +27,6 @@ public class BookingService {
 
                 startTime++;
             }
-            date.plusDays(1);
-        }
     }
 
     public void setToBooked(int slotID, User booker) {
@@ -45,6 +40,22 @@ public class BookingService {
         slot.get().setAvailable(false);
         slot.get().setBookedBy(booker);
 
+    }
+
+    public Map<LocalDate, List> getGroupedByDay() {
+        LocalDate date = LocalDate.now();
+
+        List<BookingSlot> day1 = repJpa.findByDate(date);
+        List<BookingSlot> day2 = repJpa.findByDate(date.plusDays(1));
+        List<BookingSlot> day3 = repJpa.findByDate(date.plusDays(2));
+
+        Map<LocalDate, List> days = new HashMap<>();
+
+        days.put(date.plusDays(2), day3);
+        days.put(date.plusDays(1), day2);
+        days.put(date, day1);
+
+        return days;
     }
 
     public void cancelBooking(int id){
