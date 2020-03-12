@@ -3,6 +3,7 @@ package com.academy.pingiz.booking;
 import com.academy.pingiz.user.User;
 import com.academy.pingiz.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +26,9 @@ public class BookingController {
     UserService userService;
 
     @GetMapping("/booking")
-    String getBooking(Model model, HttpSession session, @RequestParam(required = false) LocalDate currentPageDate){
+    String getBooking(Model model, HttpSession session,
+                      @RequestParam(required = false)
+                      @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate currentPageDate){
         if(currentPageDate == null){
             currentPageDate = LocalDate.now();
         }
@@ -36,7 +39,6 @@ public class BookingController {
             bookingService.createSlots(LocalDate.now());
             bookingService.createSlots(today.plusDays(1));
             bookingService.createSlots(today.plusDays(2));
-            System.out.println();
         }
 
         if(bookingService.getGroupedByDay().get(LocalDate.now().plusDays(2)).isEmpty()){
@@ -58,13 +60,13 @@ public class BookingController {
         return "booking";
     }
 
-    @PostMapping("/booking/{slotID}")
-    String booking(HttpSession session, @PathVariable int slotID){
+    @PostMapping("/booking/{id}")
+    String booking(HttpSession session, @PathVariable int id){
 
         if(session.getAttribute("validated") != null && (boolean)session.getAttribute("validated")){
             String username = (String)session.getAttribute("currentUser");
             User user = userService.getUser(username).get();
-            bookingService.setToBooked(slotID,user);
+            bookingService.setToBooked(id,user);
         }
     return "redirect:/booking";
 

@@ -14,19 +14,17 @@ public class BookingService {
     @Autowired
     private BookingRepositoryJPA repJpa;
 
-    private int startTime = 7;
-    private int endTime = 19;
+    private final int startTime = 7;
+    private final int endTime = 19;
 
     public void createSlots(LocalDate date){
-            for (int i = startTime; i < endTime; i++) {
-                LocalTime slotStart = LocalTime.of(startTime, 0);
-                LocalTime slotEnd = LocalTime.of(startTime + 1, 0);
-                var slot = new BookingSlot(slotStart, slotEnd, date);
-                repJpa.save(slot);
 
-                startTime++;
-                System.out.println(date);
-            }
+        for (int i = startTime; i < endTime; i++) {
+            LocalTime slotStart = LocalTime.of(i, 0);
+            LocalTime slotEnd = LocalTime.of(i + 1, 0);
+            var slot = new BookingSlot(slotStart, slotEnd, date);
+            var slot2 = repJpa.save(slot);
+        }
     }
 
     public void setToBooked(int slotID, User booker) {
@@ -39,6 +37,8 @@ public class BookingService {
 
         slot.get().setAvailable(false);
         slot.get().setBookedBy(booker);
+
+        repJpa.save(slot.get());
 
     }
 
@@ -67,5 +67,7 @@ public class BookingService {
 
         slot.get().setAvailable(true);
         slot.get().setBookedBy(null);
+
+        repJpa.save(slot.get());
     }
 }
