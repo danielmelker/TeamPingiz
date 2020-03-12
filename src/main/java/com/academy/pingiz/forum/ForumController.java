@@ -23,7 +23,13 @@ public class ForumController {
             session.setAttribute("postsAtt", forumService.getForumPostList());
 
             return "forum";
+    }
 
+    @GetMapping("/delete")
+    public String delete(){
+        forumService.deletePost(1);
+
+        return "forum";
     }
 
     @PostMapping("/forum")

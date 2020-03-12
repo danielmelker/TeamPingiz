@@ -29,4 +29,8 @@ public class ForumService {
                     poster,
                     postNum));
         }
+
+        public void deletePost(long postNum){
+            forumRepositorySql.deleteById(postNum);
+        }
 }
