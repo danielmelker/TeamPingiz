@@ -23,13 +23,18 @@ public class ForumService {
     private ForumRepositorySql forumRepositorySql;
 
     public List<ForumPost> getForumPostList(){
-
-        return forumRepository.forumPostList;
+        return (List)forumRepositorySql.findAll();
+        //return forumRepository.forumPostList;
     }
 
 
         public void addPost(String inputText, User poster){
             postNum++;
+            forumRepositorySql.save(new ForumPost(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM - yyyy")),
+                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")),
+                    inputText,
+                    poster,
+                    postNum));
             forumRepository.forumPostList.sort(Comparator.comparingInt(ForumPost::getPostNum));
             forumRepository.forumPostList.add(new ForumPost(
                     LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM - yyyy")),

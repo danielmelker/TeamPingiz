@@ -23,7 +23,9 @@ public class ForumController {
     public String showForum(HttpSession session, @RequestParam(required = false, defaultValue = "0") Integer page, Model model){
 
         if (session.getAttribute("validated") != null && (boolean) session.getAttribute("validated")) {
+            //find all?
             session.setAttribute("postsAtt", forumService.getForumPostList());
+
          /*   model.addAttribute("page",page);
             model.addAttribute("currentPage",page);
             model.addAttribute("show",forumRepository.splitIntoPages(page));*/
@@ -54,6 +56,7 @@ public class ForumController {
 
     @PostMapping("/forum")
     public String postToForum(Model model,@RequestParam(required = false, defaultValue = "") String inputText, HttpSession session,@RequestParam(required = false, defaultValue = "1") Integer page){
+
 
 
         if (session.getAttribute("validated") != null && (boolean) session.getAttribute("validated")) {

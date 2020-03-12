@@ -3,16 +3,25 @@ package com.academy.pingiz.forum;
 import com.academy.pingiz.user.User;
 import org.springframework.stereotype.Service;
 
-@Service
+import javax.persistence.*;
+
+
+@Entity
 public class ForumPost {
 
-    private String datePosted;
-    private String timePosted;
-    private String thePost;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int postNum;
+    @Column(name = "DATE_POSTED")
+    private String datePosted;
+    @Column(name = "TIME_POSTED")
+    private String timePosted;
+    @Column(name = "THE_POST")
+    private String thePost;
+    @Column(name = "POSTED_BY")
     private String postedBy;
 
-    private User poster;
+    //private User poster;
 
 
     public String getDatePosted() {
@@ -38,14 +47,14 @@ public class ForumPost {
         this.thePost = thePost;
         this.postNum = postNum;
         this.postedBy = poster.getUsername();
-        this.poster = poster;
+       // this.poster = poster;
     }
 
     public int getPostNum() {
         return postNum;
     }
 
-    public User getPoster(){ return poster; }
+   // public User getPoster(){ return poster; }
 
     public void setPostNum(int postNum) {
         this.postNum = postNum;
