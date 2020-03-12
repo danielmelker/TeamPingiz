@@ -18,12 +18,12 @@ public class BookingRepository {
 
     private List<BookingDay> allDays = new ArrayList<>();
 
-    public BookingRepository (){
-        for(int i = 0; i < 3; i++){
-            BookingDay bookingDay = new BookingDay(startTime, endTime, date.plusDays(i), i);
-            allDays.add(bookingDay);
-        }
-    }
+//    public BookingRepository (){
+//        for(int i = 0; i < 3; i++){
+//            BookingDay bookingDay = new BookingDay(startTime, endTime, date.plusDays(i), i);
+//            allDays.add(bookingDay);
+//        }
+//    }
 
     public List<BookingSlot> getSlotsBookedBy(User user){
         List<BookingSlot> slots = new ArrayList<>();

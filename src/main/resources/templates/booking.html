@@ -31,19 +31,22 @@
                 <p>Click the time you want to book. Time slots in grey are unavailable.<br>You can only book one hour at the time.<br>You must cancel your booking the latest an hour before.</p>
             </div>
             <span th:each="day : ${allDays}">
-            <span th:if="${day.date} != ${currentDate}">
-            <a class="btn switchday" th:text="${day.date}" th:href="'/booking?bookingPage=' + ${day.dayID}"></a>
-            </span>
 
-            <span th:if="${day.date} == ${currentDate}">
-            <a class="btn sameDay" th:text="${day.date}" th:href="'/booking?bookingPage=' + ${day.dayID}"></a>
-            </span>
+                <span th:if="${day.date} != ${currentDate}">
+                <a class="btn switchday" th:text="${day.date}" th:href="'/booking?bookingPage=' + ${day.dayID}"></a>
+                </span>
+
+                <span th:if="${day.date} == ${currentDate}">
+                <a class="btn sameDay" th:text="${day.date}" th:href="'/booking?bookingPage=' + ${day.dayID}"></a>
+                </span>
 
             </span>
 
 
             <div class="row">
+
                 <div class="modalID  col-md-auto" th:each="slot : ${bookingDay.bookingSlotList}">
+
                     <div th:if="${slot.isAvailable}">
                         <button type="button" class="btn" data-toggle="modal" th:attr="data-target='#a' + ${slot.slotID}" th:text="${slot.startTime}">
                         </button>

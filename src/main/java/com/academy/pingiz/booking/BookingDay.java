@@ -17,19 +17,19 @@ public class BookingDay {
         createSlots(startTime, endTime, date);
     }
 
-    public void createSlots(int startTime, int endTime, LocalDate date){
-
-        for (int i = startTime; i < endTime; i++) {
-            LocalTime slotStart = LocalTime.of(startTime, 0);
-            LocalTime slotEnd = LocalTime.of(startTime + 1, 0);
-
-            BookingSlot slot = new BookingSlot(slotStart, slotEnd, date);
-
-            bookingSlotList.add(slot);
-
-            startTime++;
-        }
-    }
+//    public void createSlots(int startTime, int endTime, LocalDate date){
+//
+//        for (int i = startTime; i < endTime; i++) {
+//            LocalTime slotStart = LocalTime.of(startTime, 0);
+//            LocalTime slotEnd = LocalTime.of(startTime + 1, 0);
+//
+//            BookingSlot slot = new BookingSlot(slotStart, slotEnd, date);
+//
+//            bookingSlotList.add(slot);
+//
+//            startTime++;
+//        }
+//    }
 
     public List<BookingSlot> getBookingSlotList() {
         return bookingSlotList;
