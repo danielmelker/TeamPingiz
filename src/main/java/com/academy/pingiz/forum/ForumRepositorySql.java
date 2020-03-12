@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface ForumRepositorySql extends CrudRepository<ForumPost,Long> {
 
-
+   List<ForumPost> findAllByOrderByTimePostedDesc();
 
 }

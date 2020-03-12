@@ -17,64 +17,27 @@ public class ForumController {
     @Autowired
     private ForumService forumService;
 
-
-
     @GetMapping("/forum")
-    public String showForum(HttpSession session, @RequestParam(required = false, defaultValue = "0") Integer page, Model model){
+    public String showForum(HttpSession session){
 
-        if (session.getAttribute("validated") != null && (boolean) session.getAttribute("validated")) {
-            //find all?
             session.setAttribute("postsAtt", forumService.getForumPostList());
 
-         /*   model.addAttribute("page",page);
-            model.addAttribute("currentPage",page);
-            model.addAttribute("show",forumRepository.splitIntoPages(page));*/
             return "forum";
-        } else {
-            return "landingPage";
-        }
-    }
-
-    @GetMapping("/forum/{page}")
-    public String showForum1(HttpSession session, @RequestParam(required = false, defaultValue = "1") Integer page, Model model){
-        if (session.getAttribute("validated") != null && (boolean) session.getAttribute("validated")) {
-            session.setAttribute("postsAtt", forumService.getForumPostList());
-      /*      model.addAttribute("page",page);
-            model.addAttribute("currentPage",page);
-            model.addAttribute("show",forumRepository.splitIntoPages(2));*/
-            return "forum";
-        } else {
-            return "landingPage";
-        }
-
-
 
     }
-
-
-
 
     @PostMapping("/forum")
-    public String postToForum(Model model,@RequestParam(required = false, defaultValue = "") String inputText, HttpSession session,@RequestParam(required = false, defaultValue = "1") Integer page){
-
-
+    public String postToForum(@RequestParam(required = false, defaultValue = "") String inputText, HttpSession session){
 
         if (session.getAttribute("validated") != null && (boolean) session.getAttribute("validated")) {
-
             User poster =(User) session.getAttribute("user");
-
             forumService.addPost(inputText, poster);
-            forumService.sortPosts();
 
             session.setAttribute("postsAtt", forumService.getForumPostList());
 
-
-         /*   model.addAttribute("page", page);
-            model.addAttribute("currentPage", page);*/
-
-            return "forum";
+            return "redirect:/forum";
         }else {
-            return "redirect:/landingPage";
+            return "redirect:/";
         }
     }
 }
