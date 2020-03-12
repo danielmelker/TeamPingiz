@@ -29,13 +29,13 @@ public class UserService {
     }
 
     public boolean register(User user){
-        return userRepo.add(user);
+        return userRepo.save(user);
     }
 
     public boolean register(User... users){
         boolean b= true;
         for(User u:users){
-            if(!userRepo.add(u))
+            if(!userRepo.save(u))
                 b=false;
         }
         return b;
@@ -44,6 +44,6 @@ public class UserService {
 
 
     public Set<User> getUsers() {
-        return userRepo.getAllUsers();
+        return userRepo.findAll();
     }
 }

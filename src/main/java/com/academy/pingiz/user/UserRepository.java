@@ -13,7 +13,7 @@ public class UserRepository {
         users = new HashMap<>();
     }
 
-    public boolean add(User user){
+    public boolean save(User user){
 
         if(users.containsKey(user.getUsername())){
             return false; //username is taken.
@@ -23,7 +23,7 @@ public class UserRepository {
         }
     }
 
-    public Set<User> getAllUsers(){
+    public Set<User> findAll(){
         return new HashSet<User>(users.values());
     }
 
