@@ -211,6 +211,7 @@ public class Match {
         return winners;
     }
 
+
     public MatchType getType() {
         return type;
     }

@@ -19,6 +19,11 @@ public class TeamPingizController {
     public String showIndex(HttpSession session, Model model) {
         if (session.getAttribute("validated") != null && (boolean) session.getAttribute("validated")) {
             User user = (User)session.getAttribute("user");
+            if(user.getBookings()==null){
+                System.out.println("bookings is null!");
+            }
+            System.out.println(user.getBookings().size());
+
             model.addAttribute("bookedSlots", user.getBookings());
             return "index";
         } else {

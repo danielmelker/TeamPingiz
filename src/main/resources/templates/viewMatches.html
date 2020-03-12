@@ -47,10 +47,18 @@
                 <tbody>
                 <tr th:each="match : ${matches}">
                     <th scope="row">[[${match.timeString}]]</th>
-                    <td>
+
+
+                    <td th:if="${match.winners==team1}" class="winner">
                         <span th:each="user : ${match.team1}">[[${user.username}]] </span>
                     </td>
-                    <td>
+                    <td th:if="${match.winners!=team1}">
+                        <span th:each="user : ${match.team1}">[[${user.username}]] </span>
+                    </td>
+                    <td th:if="${match.winners==team2}" class="winner">
+                        <span th:each="user : ${match.team2}">[[${user.username}]] </span>
+                    </td>
+                    <td th:if="${match.winners!=team2}">
                         <span th:each="user : ${match.team2}">[[${user.username}]] </span>
                     </td>
                     <td> [[${match.team1score}]] - [[${match.team2score}]]</td>
