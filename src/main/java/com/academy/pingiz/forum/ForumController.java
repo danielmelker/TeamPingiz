@@ -27,9 +27,19 @@ public class ForumController {
     }
 
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable long id, HttpSession session){
-        if(session.getAttribute("validated") != null && (boolean) session.getAttribute("validated")) {
-            forumService.deletePost(id);
+    public String delete(@PathVariable long id, HttpSession session) {
+        if (session.getAttribute("validated") != null && (boolean) session.getAttribute("validated")) {
+
+            ForumPost post = forumService.getPostById(id);
+            User poster=post.getPoster();
+
+            User loggedIn = (User) session.getAttribute("user");
+
+            if (poster.getUsername().equals(loggedIn.getUsername())) {
+
+                forumService.deletePost(id);
+
+            }
         }
 
         return "redirect:/forum";
