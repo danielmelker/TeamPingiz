@@ -23,7 +23,7 @@ public class BookingController {
 
     @GetMapping("/booking")
     String getBooking(Model model, HttpSession session, @RequestParam(required = false, defaultValue = "0") int bookingPage){
-        model.addAttribute("bookingDay", bookingService.getBookingRep().getAllDays().get(bookingPage));
+        model.addAttribute("bookingDay", bookingService..getAllDays().get(bookingPage));
         model.addAttribute("allDays", bookingService.getBookingRep().getAllDays());
         model.addAttribute("currentPage", bookingPage);
         model.addAttribute("currentDate", bookingService.getBookingRep().getAllDays().get(bookingPage).getDate());
@@ -31,9 +31,7 @@ public class BookingController {
         if(session.getAttribute("validated") == null){
             session.setAttribute("validated",false);
         }
-//        if(session.getAttribute("validated") != null && (boolean)session.getAttribute("validated")){
-//
-//        }
+
         return "booking";
     }
 

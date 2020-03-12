@@ -20,8 +20,6 @@ public class BookingService {
     private int endTime = 19;
     private LocalDate date = LocalDate.now();
 
-    private List<BookingDay> allDays = new ArrayList<>();
-
     public void createSlots(int startTime, int endTime, LocalDate date){
         for (int t = 0; t < 3; t++) {
             for (int i = startTime; i < endTime; i++) {
@@ -49,14 +47,14 @@ public class BookingService {
 
     }
 
-    public List<BookingSlot> getSlotsBookedBy(User user){
-        return repJpa.getSlotsBookedBy(user);
-    }
-
     public void cancelBooking(int id){
-        BookingSlot slot = bookingRep.getSlotById(id);
-        if(!slot.getIsAvailable()){
-            slot.unbook();
+        Optional<BookingSlot> slot = repJpa.findById(id);
+
+        if (slot.isEmpty()) {
+            return;
         }
+
+        slot.get().setAvailable(true);
+        slot.get().setBookedBy(null);
     }
 }
