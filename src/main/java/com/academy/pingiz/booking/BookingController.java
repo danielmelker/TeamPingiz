@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -29,9 +30,21 @@ public class BookingController {
             currentPageDate = LocalDate.now();
         }
 
+        LocalDate today = LocalDate.now();
 
+        if(bookingService.getGroupedByDay().get(LocalDate.now()).isEmpty()){
+            bookingService.createSlots(LocalDate.now());
+            bookingService.createSlots(today.plusDays(1));
+            bookingService.createSlots(today.plusDays(2));
+            System.out.println();
+        }
+
+        if(bookingService.getGroupedByDay().get(LocalDate.now().plusDays(2)).isEmpty()){
+            bookingService.createSlots(LocalDate.now().plusDays(2));
+        }
 
         System.out.println(bookingService.getGroupedByDay().get(currentPageDate).size());
+        System.out.println(today.plusDays(2));
 
         model.addAttribute("bookingDay", bookingService.getGroupedByDay());
         var days = bookingService.getGroupedByDay().keySet().toArray();
