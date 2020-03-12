@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class User{
@@ -24,9 +25,9 @@ public class User{
     private String fileURL;
 
     @OneToMany(mappedBy = "bookedBy")
-    private Iterable<BookingSlot> bookings;
+    private List<BookingSlot> bookings;
 
-    public Iterable<BookingSlot> getBookings() {
+    public List<BookingSlot> getBookings() {
         return bookings;
     }
 

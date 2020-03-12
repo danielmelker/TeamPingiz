@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.time.LocalDate;
+import java.util.Arrays;
 
 @Controller
 public class BookingController {
@@ -22,12 +24,20 @@ public class BookingController {
     UserService userService;
 
     @GetMapping("/booking")
-    String getBooking(Model model, HttpSession session, @RequestParam(required = false, defaultValue = "0") int bookingPage){
-        model.addAttribute("bookingDay", bookingService..getAllDays().get(bookingPage));
-        model.addAttribute("allDays", bookingService.getBookingRep().getAllDays());
-        model.addAttribute("currentPage", bookingPage);
-        model.addAttribute("currentDate", bookingService.getBookingRep().getAllDays().get(bookingPage).getDate());
-        model.addAttribute("numOfDays", bookingService.numberOfBookingDays());
+    String getBooking(Model model, HttpSession session, @RequestParam(required = false) LocalDate currentPageDate){
+        if(currentPageDate == null){
+            currentPageDate = LocalDate.now();
+        }
+
+        if()
+
+        System.out.println(bookingService.getGroupedByDay().get(currentPageDate).size());
+
+        model.addAttribute("bookingDay", bookingService.getGroupedByDay());
+        var days = bookingService.getGroupedByDay().keySet().toArray();
+        Arrays.sort(days);
+        model.addAttribute("allDays", days);
+        model.addAttribute("currentPageDate", currentPageDate);
         if(session.getAttribute("validated") == null){
             session.setAttribute("validated",false);
         }
