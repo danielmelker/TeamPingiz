@@ -11,19 +11,19 @@ import java.util.List;
 public class BookingService {
 
     @Autowired
-    private BookingRepository bookingRep;
+    private BookingRepositoryJPA repJpa;
 
-    public BookingRepository getBookingRep() {
-        return bookingRep;
-    }
-
-    public void setBookingRep(BookingRepository bookingRep) {
-        this.bookingRep = bookingRep;
-    }
+//    public BookingRepository getBookingRep() {
+//        return bookingRep;
+//    }
+//
+//    public void setBookingRep(BookingRepository bookingRep) {
+//        this.bookingRep = bookingRep;
+//    }
 
     public List<Integer> numberOfBookingDays(){
         List<Integer> numOfDays = new ArrayList<>();
-        for(Integer i = 1; i < bookingRep.getAllDays().size(); i++){
+        for(Integer i = 1; i < repJpa.getAllDays().size(); i++){
             numOfDays.add(i);
         }
         return numOfDays;

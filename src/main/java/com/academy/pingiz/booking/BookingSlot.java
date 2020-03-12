@@ -2,26 +2,32 @@ package com.academy.pingiz.booking;
 
 import com.academy.pingiz.user.User;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+@Entity
 public class BookingSlot {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer slotID;
     private boolean isAvailable;
     private LocalTime startTime;
     private LocalTime endTime;
     private LocalDate date;
-    private Integer slotID;
-    private static int lastID = 0;
+//    private static int lastID = 0;
 
+    @ManyToOne
     private User bookedBy = null;
 
     public BookingSlot (LocalTime startTime, LocalTime endTime, LocalDate date){
         this.startTime = startTime;
         this.endTime = endTime;
-        this.slotID = lastID;
+//        this.slotID = lastID;
         this.date = date;
         isAvailable = true;
-        lastID++;
+//        lastID++;
     }
 
     public boolean getIsAvailable() {

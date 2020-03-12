@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-import java.util.Set;
 
 @Service
 public class UserService {
@@ -13,7 +12,7 @@ public class UserService {
 //    private UserRepository userRepo;
 
     @Autowired
-    private UserRepositoryJPA userRepo;
+    private UserRepository userRepo;
 
     public AuthResponse logIn(String username, String password){
 
@@ -48,7 +47,7 @@ public class UserService {
         }
         return b;
     }
-    
+
     public Iterable<User> getUsers() {
         return userRepo.findAll();
     }
