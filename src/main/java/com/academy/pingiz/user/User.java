@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name="PINGIZ_USER")
 public class User{
     private static final long serialVersion = 1L;
 

@@ -66,7 +66,6 @@ public class BookingService {
         }
         var changedSlot=slot.get();
         changedSlot.unbook();
-
         repJpa.save(changedSlot);
     }
 }
