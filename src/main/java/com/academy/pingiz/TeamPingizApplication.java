@@ -9,9 +9,6 @@ import java.util.TimeZone;
 @SpringBootApplication
 public class TeamPingizApplication {
 
-
-
-
 	public static void main(String[] args) {
 		TimeZone.setDefault(TimeZone.getTimeZone("Europe/Stockholm"));
 		SpringApplication.run(TeamPingizApplication.class, args);

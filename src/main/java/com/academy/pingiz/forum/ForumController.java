@@ -20,9 +20,7 @@ public class ForumController {
 
     @GetMapping("/forum")
     public String showForum(HttpSession session){
-
             session.setAttribute("postsAtt", forumService.getForumPostList());
-
             return "forum";
     }
 
@@ -32,13 +30,10 @@ public class ForumController {
 
             ForumPost post = forumService.getPostById(id);
             User poster=post.getPoster();
-
             User loggedIn = (User) session.getAttribute("user");
 
             if (poster.getUsername().equals(loggedIn.getUsername())) {
-
                 forumService.deletePost(id);
-
             }
         }
 

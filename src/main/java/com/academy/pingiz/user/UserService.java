@@ -8,9 +8,6 @@ import java.util.Optional;
 @Service
 public class UserService {
 
-//    @Autowired
-//    private UserRepository userRepo;
-
     @Autowired
     private UserRepository userRepo;
 
@@ -35,7 +32,7 @@ public class UserService {
             userRepo.save(user);
             return true;
         } else {
-            return true;
+            return false;
         }
     }
 
@@ -50,5 +47,9 @@ public class UserService {
 
     public Iterable<User> getUsers() {
         return userRepo.findAll();
+    }
+
+    public void update(User u) {
+        userRepo.save(u);
     }
 }

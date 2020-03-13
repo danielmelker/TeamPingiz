@@ -67,7 +67,6 @@ public class BookingController {
 
     }
 
-
     @GetMapping("/booking/cancel/{id}")
     String cancel(Model model, HttpSession session, @PathVariable("id") int id){
         bookingService.cancelBooking(id);

@@ -19,17 +19,17 @@ public class ForumService {
         return (List)forumRepositorySql.findAllByOrderByTimePostedDesc();
     }
 
-        public void addPost(String inputText, User poster) {
-            if (!inputText.isEmpty()) {
-                forumRepositorySql.save(new ForumPost(LocalDate.now(),
-                        LocalTime.now(),
-                        inputText,
-                        poster));
-            }
+    public void addPost(String inputText, User poster) {
+        if (!inputText.isEmpty()) {
+            forumRepositorySql.save(new ForumPost(LocalDate.now(),
+                    LocalTime.now(),
+                    inputText,
+                    poster));
         }
-        public void deletePost(long postNum){
-            forumRepositorySql.deleteById(postNum);
-        }
+    }
+    public void deletePost(long postNum){
+        forumRepositorySql.deleteById(postNum);
+    }
 
     public ForumPost getPostById(long id) {
         return forumRepositorySql.findById(id).get();

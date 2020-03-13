@@ -23,23 +23,19 @@ public class BookingService {
             LocalTime slotStart = LocalTime.of(i, 0);
             LocalTime slotEnd = LocalTime.of(i + 1, 0);
             var slot = new BookingSlot(slotStart, slotEnd, date);
-            var slot2 = repJpa.save(slot);
+            repJpa.save(slot);
         }
     }
 
     public void setToBooked(int slotID, User booker) {
-
         Optional<BookingSlot> slot = repJpa.findById(slotID);
 
-        if (slot.isEmpty() ||! slot.get().getIsAvailable()) {
+        if (slot.isEmpty() || !slot.get().getIsAvailable()) {
             return;
         }
-
         slot.get().setAvailable(false);
         slot.get().setBookedBy(booker);
-
         repJpa.save(slot.get());
-
     }
 
     public Map<LocalDate, List> getGroupedByDay() {

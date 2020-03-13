@@ -15,23 +15,15 @@ import javax.servlet.http.HttpSession;
 public class TeamPingizController {
 
     @Autowired
-    BookingService bookingService;
-
-    @Autowired
     UserService userService;
 
-    @GetMapping
+    @GetMapping("/")
     public String showIndex(HttpSession session, Model model) {
         if (session.getAttribute("validated") != null && (boolean) session.getAttribute("validated")) {
-            User user = (User)session.getAttribute("user");
 
+            User user = (User)session.getAttribute("user");
             user = userService.getUser(user.getUsername()).get();
             session.setAttribute("user", user);
-
-            if(user.getBookings()==null){
-                System.out.println("bookings is null!");
-            }
-            System.out.println(user.getBookings().size());
 
             model.addAttribute("bookings", user.getBookings());
             return "index";

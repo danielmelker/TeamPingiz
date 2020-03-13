@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class forDummiesController {
 
     @GetMapping("/forDummies")
-    public String getBooking(Model model){
-//        model.addAttribute();
+    public String getBooking(){
         return "forDummies";
     }
 

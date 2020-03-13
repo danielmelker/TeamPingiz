@@ -19,7 +19,7 @@ public class UserController {
 
     public UserController(UserService userService){
         this.userService = userService;
-        setupTestUsers();
+        //setupTestUsers();
     }
 
 
@@ -43,9 +43,7 @@ public class UserController {
         u2.setFileURL("https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Boris_Johnson_official_portrait_%28cropped%29.jpg/330px-Boris_Johnson_official_portrait_%28cropped%29.jpg");
         u3.setFileURL("https://www.theneweuropean.co.uk/polopoly_fs/1.6332927.1571650982!/image/image.jpg_gen/derivatives/landscape_1024/image.jpg");
 
-
         andreas.setDescription("Java teacher and pingis enthusiast.");
-
         userService.register(u1,u2,u3,u4,u5,andreas);
     }
 
@@ -53,10 +51,8 @@ public class UserController {
     @GetMapping("/editProfile")
     public String editProfile(HttpSession session){
 
-
         if(session.getAttribute("validated") != null && (boolean)session.getAttribute("validated")){
             User u = userService.getUser((String)session.getAttribute("currentUser")).get();
-
 
             session.setAttribute("userImg", u.getFileURL());
             session.setAttribute("userDescription", u.getDescription());
@@ -91,6 +87,7 @@ public class UserController {
             if(password != null && !password.equals("")){
                 u.setPassword(password);
             }
+            userService.update(u);
 
             return "editProfile";
         }
@@ -100,7 +97,7 @@ public class UserController {
 
     @GetMapping("/login")
     public String login(HttpSession session){
-        return "login2";
+        return "login";
     }
 
 
